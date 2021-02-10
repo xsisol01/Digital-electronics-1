@@ -2,6 +2,10 @@
 ## Labs
 *hello hello*
 
+Meno|Priezvisko
+------- | -------
+Filip|Sisolak
+
 **Source code**
 
 ```vhdl
