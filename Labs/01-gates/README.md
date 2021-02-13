@@ -1,8 +1,8 @@
 # LAB 01-Gates
-Filip Sisolak (228030)
+# Filip Sisolak (228030)
 
 
-#### 2. Verification of DeMorgan's laws
+## 2. Verification of DeMorgan's laws
 
 | **c** | **b** |**a** | **f(c,b,a)** |
 | :-: | :-: | :-: | :-: |
@@ -15,7 +15,7 @@ Filip Sisolak (228030)
 | 1 | 1 | 0 | 0 |
 | 1 | 1 | 1 | 0 |
 
-**Link to EDA playground ->
+**Link to EDA playground ->**
 https://www.edaplayground.com/x/F8Mp
 
 **Architecture of code**
@@ -29,8 +29,10 @@ architecture dataflow of gates is
   
 end architecture dataflow;
 ```
-**Simulation of DeMorgan's law
+**Simulation of DeMorgan's law**
 ![Simulation of DeMorgan Laws](Images/DMLaws.PNG)
+
+### Verification of Distributive laws
 
 https://www.edaplayground.com/x/vTeD
 
