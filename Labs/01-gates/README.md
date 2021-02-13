@@ -22,5 +22,5 @@ begin
   
 end architecture dataflow;
 ```
-![Simulation of DeMorgan Laws](DMLaws.PNG)
+![Simulation of DeMorgan Laws](Images/DMLaws.PNG)
 
