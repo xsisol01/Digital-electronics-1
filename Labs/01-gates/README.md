@@ -1,6 +1,9 @@
 # LAB 01-Gates
 Filip Sisolak (228030)
 
+### 1. Github repository link
+https://github.com/xsisol01/Digital-electronics-1.git
+
 
 ### 2. Verification of DeMorgan's laws
 
