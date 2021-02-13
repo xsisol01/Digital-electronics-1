@@ -33,7 +33,7 @@ end architecture dataflow;
 **Simulation of DeMorgan's laws**
 ![Simulation of DeMorgan Laws](Images/DMLaws.PNG)
 
-### 3. Verification of Distributive laws
+#### 3. Verification of Distributive laws
 
 **Link to EDA playground (Distributive laws) ->** 
 https://www.edaplayground.com/x/vTeD
