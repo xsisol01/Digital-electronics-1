@@ -25,5 +25,23 @@ architecture dataflow of gates is
   
 end architecture dataflow;
 ```
+
 ![Simulation of DeMorgan Laws](Images/DMLaws.PNG)
+
+https://www.edaplayground.com/x/vTeD
+
+```Distribution Laws Code
+architecture dataflow of gates is
+begin
+    f1_o  <= (x_i and y_i) or (x_i and z_i); --First distribution Law
+    f2_o  <= x_i and (y_i or z_i);           --First equation f1_o = f2_o
+    f3_o  <= (x_i or y_i) and (x_i or z_i);  --Second distribution Law
+    f4_o  <= x_i or (y_i and z_i);           --Second equation f3_o = f4_o
+     
+end architecture dataflow;
+```
+
+![Simulation of DeMorgan Laws](Images/DISLaws.PNG)
+
+
 
