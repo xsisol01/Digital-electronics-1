@@ -4,7 +4,7 @@ https://github.com/xsisol01/Digital-electronics-1.git
 
 ## 1. Preparation tasks
 
-_Truth table_
+* Truth table
 | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
 | :-: | :-: | :-: | :-: | :-: | :-: |
 | 0 | 0 0 | 0 0 | 0 | 1 | 0 |
@@ -26,18 +26,24 @@ _Truth table_
 
 ## 2. A 2-bit comparator
 
-_Karnaugh Maps_
+* Karnaugh Maps
 ![Karnaugh maps](Images/Kmaps_lab2.PNG)
 
 
 
->Equation of simplified SoP form of the "greater than" function
+* Equation of simplified SoP form of the "greater than" function
 
 ![SoP](Images/FunctionSoP.gif)
 
->Equation of simplified PoS form of the "less than" function
+* Equation of simplified PoS form of the "less than" function
 
 ![PoS](Images/FunctionPoS.gif)
+
+* Link to EDA Playground (2-bit comparator) -> https://www.edaplayground.com/x/sEcj
+
+## 3. A 4-bit binary comparator
+
+
 
 
 
