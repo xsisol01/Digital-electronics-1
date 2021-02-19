@@ -32,7 +32,11 @@ _Karnaugh Maps_
 
 
 _equation of simplified SoP form of the "greater than" function_
+f_{simpl SoP} = (B_{1} \overline{A_{1}}\)+(B_{0} \overline{A_{1}}\ \overline{A_{0}}\)+(\overline{A_{0}}\ B_{0}  
+ B_{1} )
+ 
 _equation of simplified PoS form of the "less than" function_
+
 
 
 
