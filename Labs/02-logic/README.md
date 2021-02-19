@@ -174,9 +174,13 @@ begin
     end process p_stimulus;
 ```
 
-* Listing of simulator console output
+* Listing of simulator console output with 2 errors
 
 ![Console output with error](Images/ConsoleOut.PNG)
+
+> if needed, image of simulation in EPWave is available in Images
+> ->https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/02-logic/Images
+
 
 * Link to EDA Playground (4-bit comparator) -> https://www.edaplayground.com/x/8SD_
 
