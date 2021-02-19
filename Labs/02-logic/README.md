@@ -31,10 +31,10 @@ _Karnaugh Maps_
 
 
 
-_equation of simplified SoP form of the "greater than" function_
+>_equation of simplified SoP form of the "greater than" function_
 ![SoP](Images/FunctionSoP.gif)
 
-_equation of simplified PoS form of the "less than" function_
+>_equation of simplified PoS form of the "less than" function_
 ![PoS](Images/FunctionPoS.gif)
 
 
