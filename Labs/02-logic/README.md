@@ -182,7 +182,7 @@ begin
 > ->https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/02-logic/Images
 
 
-* Link to EDA Playground (4-bit comparator) -> https://www.edaplayground.com/x/8SD_
+* Link to EDA Playground (4-bit comparator) -> https://www.edaplayground.com/x/SXSC
 
 
 
