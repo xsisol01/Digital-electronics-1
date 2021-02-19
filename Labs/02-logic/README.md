@@ -96,8 +96,8 @@ end entity tb_comparator_4bit;
 architecture testbench of tb_comparator_4bit is
 
     -- Local signals
-    signal s_a       : std_logic_vector(4 - 1 downto 0);
-    signal s_b       : std_logic_vector(4 - 1 downto 0);
+    signal s_a       	 : std_logic_vector(4 - 1 downto 0);
+    signal s_b       	 : std_logic_vector(4 - 1 downto 0);
     signal s_B_greater_A : std_logic;
     signal s_B_equals_A  : std_logic;
     signal s_B_less_A    : std_logic;
@@ -115,14 +115,14 @@ begin
 
     --------------------------------------------------------------------
     -- Data generation process
-    ------------------------------1-------------------------------------
+    --------------------------------------------------------------------
     p_stimulus : process
     begin
         -- Report a note at the begining of stimulus process
         report "Stimulus process started" severity note;
 
 
-        s_b <= "0000"; s_a <= "0000"; wait for 100 ns;
+        	s_b <= "0000"; s_a <= "0000"; wait for 100 ns;
 		assert ((s_B_greater_A = '0') and (s_B_equals_A = '1') and (s_B_less_A = '0'))
 		report "Test failed for input combination: 0000, 0000" severity error;
 
