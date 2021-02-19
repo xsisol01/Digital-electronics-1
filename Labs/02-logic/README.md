@@ -27,9 +27,9 @@ _Truth table_
 ## 2. A 2-bit comparator
 
 _Karnaugh Maps_
-![Karnaugh map for SoP of A = B](Images/Kmap_de1_SoP_equal.PNG)
-![Karnaugh map for SoP of A = B](Images/Kmap_de1_SoP_greater.PNG)
-![Karnaugh map for SoP of A = B](Images/Kmap_de1_PoS_less.PNG)
+![Karnaugh maps](Images/Kmaps_lab2.PNG)
+
+
 
 _equation of simplified SoP form of the "greater than" function_
 _equation of simplified PoS form of the "less than" function_
