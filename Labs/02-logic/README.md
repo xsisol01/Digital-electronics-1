@@ -4,7 +4,7 @@ https://github.com/xsisol01/Digital-electronics-1.git
 
 ## 1. Preparation tasks
 
-**Truth table
+_Truth table_
 | **Dec. equivalent** | **B[1:0]** | **A[1:0]** | **B is greater than A** | **B equals A** | **B is less than A** |
 | :-: | :-: | :-: | :-: | :-: | :-: |
 | 0 | 0 0 | 0 0 | 0 | 1 | 0 |
@@ -26,6 +26,7 @@ https://github.com/xsisol01/Digital-electronics-1.git
 
 ## 2. A 2-bit comparator
 
-**Karnaugh Maps
+_Karnaugh Maps_
+
 
 
