@@ -44,7 +44,7 @@ https://github.com/xsisol01/Digital-electronics-1.git
 
 ## 3. A 4-bit binary comparator
 
-* Listing of vhdl code desing.vhd
+* Listing of VHDL code desing.vhd
 
 ```vhdl
 library ieee;
@@ -77,7 +77,7 @@ begin
 
 end architecture Behavioral;
 ```
-* listing of vhdl testbench.vhd
+* listing of VHDL testbench.vhd
 
 ```vhdl
 library ieee;
