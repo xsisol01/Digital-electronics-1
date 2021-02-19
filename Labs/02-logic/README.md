@@ -77,7 +77,7 @@ begin
 
 end architecture Behavioral;
 ```
-* listing of VHDL testbench.vhd
+* Listing of VHDL testbench.vhd
 
 ```vhdl
 library ieee;
@@ -174,7 +174,13 @@ begin
     end process p_stimulus;
 ```
 
-* listing error in console
+* Listing of simulator console output
+
+![Console output with error](Images/ConsoleOut.PNG)
+
+* Link to EDA Playground (4-bit comparator) -> https://www.edaplayground.com/x/8SD_
+
+
 
 
 
