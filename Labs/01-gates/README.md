@@ -1,6 +1,9 @@
 # LAB 01-Gates
 Filip Sisolak (228030)
 
+### 1. Github repository link
+https://github.com/xsisol01/Digital-electronics-1.git
+
 
 ### 2. Verification of DeMorgan's laws
 
@@ -20,7 +23,7 @@ Completed table with logical values
 https://www.edaplayground.com/x/F8Mp
 
 **Architecture of code**
-```bash
+```vhdl
 architecture dataflow of gates is
 
  begin
@@ -39,7 +42,7 @@ end architecture dataflow;
 https://www.edaplayground.com/x/vTeD
 
 **Architecture of code**
-```bash
+```vhdl
 architecture dataflow of gates is
 begin
     f1_o  <= (x_i and y_i) or (x_i and z_i); --First distribution Law
