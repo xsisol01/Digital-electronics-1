@@ -73,7 +73,7 @@ end architecture testbench;
 ![Waveform](images/WaveformVivado.PNG)
 
 ## 3. A Vivado tutorial
-#### 1.Project creation
+#### 1. Project creation
   1. QuickStart -> Create Project 
   2. **Project Name:** Set project name/directory 
   3. **Project Type:** Choose RTL project
