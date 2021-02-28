@@ -73,4 +73,34 @@ end architecture testbench;
 ![Waveform](Images/WaveformVivado.PNG)
 
 ## 3. A Vivado tutorial
+#### 1.Project creation
+  1. QuickStart -> Create Project 
+  2. Project Name: Set project name/directory 
+  3. Project Type: Choose RTL project
+  4. Add Sources: Create File -> File Type: VHDL, choose name without spaces -> OK!
+  5. Add Constrains: You can do that later in project!
+  6. Default Part: Boards -> choose your board (Nexys A7-50T)
+  7. Project Summary: Finish
+#### 2. Adding source file
+  1. File -> Add Sources
+  2. Add Sources: Choose "Add or create design sources"
+  3. Add or Create Design Sources: Create File -> File Type: VHDL, choose name -> OK! -> Finish
+
+#### 3. Adding testbench file
+  1. File -> Add Sources
+  2. Add Sources: Choose "Add or create simulation sources"
+  3. Add or Create Simulation Sources: Create File -> File Type: VHDL, choose name with tb_ at the beginning  -> OK! -> Finish
+
+#### 4. Running Simulation
+  1. Flow Navigator -> SIMULATION -> Run Simulation -> Run Behavioral Simulation
+
+  1. Flow -> Run Simulation -> Run Behavioral Simulation
+
+#### 5. Adding XDC constraints file
+  1.  File -> Add Sources
+  2.  Add Sources: Choose "Add or create constraints"
+  3.  Add or Create Constraints: Create File -> File Type: XDC, choose same name as board name -> OK! -> Finish
+
+
+
 
