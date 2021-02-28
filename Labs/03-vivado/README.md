@@ -70,7 +70,7 @@ end architecture testbench;
 ```
 * Screenshot with stimulated time waveforms
 
-![Karnaugh maps](Images/WaveformVivado.PNG)
+![Waveform](Images/WaveformVivado.PNG)
 
 ## 3. A Vivado tutorial
 
