@@ -70,7 +70,7 @@ end architecture testbench;
 ```
 * Screenshot with stimulated time waveforms
 
-![Waveform](Images/WaveformVivado.PNG)
+![Waveform](images/WaveformVivado.PNG)
 
 ## 3. A Vivado tutorial
 #### 1.Project creation
