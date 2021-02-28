@@ -3,7 +3,7 @@
 https://github.com/xsisol01/Digital-electronics-1.git
 
 ## 1. Preparation tasks
-* table witch connection of 16 slide switches and 16 LEDs on Nexys A7 board
+* table with connection of 16 slide switches and 16 LEDs on Nexys A7 board
 
 | **Switch** | **Connection** | **LED** | **Connection** | 
 | :-: | :-: | :-: | :-: |
