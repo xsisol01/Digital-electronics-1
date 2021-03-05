@@ -1,3 +1,13 @@
+# 04-Segment
+
+### GitHub repository link
+https://github.com/xsisol01/Digital-electronics-1.git
+
+## 1. Preparation tasks
+* Figure with connection of 7-segment displays on Nexys A7 board
+![Figure of 7SegD](Images/7segfigure.PNG)
+
+* Decoder truth table for common anode 7-segment displays on Nexys A7 board
 | Hex | Inputs | A | B | C | D | E | F | G |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | 0 | 0000 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
