@@ -68,8 +68,8 @@ https://github.com/xsisol01/Digital-electronics-1.git
 | b | 1011 | 0 | 1 | 1 | 0 |
 | C | 1100 | 0 | 1 | 0 | 0 |
 | d | 1101 | 0 | 1 | 1 | 0 |
-| E | 1110 | 0 | 1 | 0 |  |
-| F | 1111 | 0 | 1 | 1 |  |
+| E | 1110 | 0 | 1 | 0 | 0 |
+| F | 1111 | 0 | 1 | 1 | 0 |
 
 * Listing of VHDL code for LEDs(7:4)
 
