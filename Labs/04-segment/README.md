@@ -5,6 +5,7 @@ https://github.com/xsisol01/Digital-electronics-1.git
 
 ## 1. Preparation tasks
 * Figure with connection of 7-segment displays on Nexys A7 board
+
 ![Figure of 7SegD](Images/7segfigure.PNG)
 
 * Decoder truth table for common anode 7-segment displays on Nexys A7 board
@@ -112,6 +113,7 @@ p_stimulus : process
 ```
 
 * Screenshot with simulated time waveforms
+
 ![Stimulation waveforms](Images/ss7seg.PNG)
 
 * Listing of VHDL code from source file top.vhd
