@@ -6,6 +6,15 @@ https://github.com/xsisol01/Digital-electronics-1.git
 ## 1. Preparation tasks
 * Figure with connection of push buttons on NexysA7 board
 
+![ButtonsPIns](Images/btns.PNG)
+
+| Button |  FPGA Pin | LV not pressed  | LV pressed | 
+| :-: | :-: | :-: | :-: |
+| BTNL | P17 | 0 | 3.3 | 
+| BTNR | M17 | 0 | 3.3 | 
+| BTNU | M18 | 0 | 3.3 | 
+| BTND | P18 | 0 | 3.3 | 
+| BTNC | N17 | 0 | 3.3 | 
 
 * Table with calculated values   
    | **Time interval** | **Number of clk periods** | **Number of clk periods in hex** | **Number of clk periods in binary** |
