@@ -11,6 +11,6 @@ Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
 Compiling package ieee.numeric_std
-Compiling architecture behavioral of entity xil_defaultlib.cnt_up_down [\cnt_up_down(g_cnt_width=3)\]
+Compiling architecture behavioral of entity xil_defaultlib.cnt_up_down [cnt_up_down_default]
 Compiling architecture testbench of entity xil_defaultlib.tb_cnt_up_down
 Built simulation snapshot tb_cnt_up_down_behav

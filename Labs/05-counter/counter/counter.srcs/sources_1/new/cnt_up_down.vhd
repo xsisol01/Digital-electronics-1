@@ -47,17 +47,15 @@ begin
     begin
         if rising_edge(clk) then
         
-            if (reset = '1') then               -- Synchronous reset
-                s_cnt_local <= (others => '0'); -- Clear all bits
+            if (reset = '1') then               
+                s_cnt_local <= (others => '0'); 
 
-            elsif (en_i = '1') then       -- Test if counter is enabled
-
-
-                
-
-
-                s_cnt_local <= s_cnt_local + 1;
-
+            elsif (en_i = '1') then     
+                if(cnt_up_i = '1')then
+                    s_cnt_local <= s_cnt_local + 1;
+                else    
+                    s_cnt_local <= s_cnt_local - 1;
+               end if;
 
             end if;
         end if;
