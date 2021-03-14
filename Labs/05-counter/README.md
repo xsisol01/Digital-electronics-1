@@ -58,6 +58,7 @@ https://github.com/xsisol01/Digital-electronics-1.git
         
         -- Reset activated
         s_reset <= '1';
+        assert (s_reset =  '0') report "reset activated" severity note;
         wait for 73 ns;
 
         s_reset <= '0';
@@ -73,15 +74,21 @@ https://github.com/xsisol01/Digital-electronics-1.git
 
         -- Enable counting
         s_en     <= '1';
+        assert (s_en = '1') report "counting enabled" severity note;
         
         -- Change counter direction
         s_cnt_up <= '1';
+        assert (s_cnt_up = '1') report "up counting" severity note;
         wait for 380 ns;
+        
+        
         s_cnt_up <= '0';
+        assert (s_cnt_up = '0') report "down counting" severity note;
         wait for 220 ns;
-
+        
         -- Disable counting
         s_en     <= '0';
+        assert (s_cnt_up = '0') report "counting disabled" severity note;
 
         report "Stimulus process finished" severity note;
         wait;
