@@ -227,4 +227,4 @@ end architecture Behavioral;
 
 * Image of the driver schematic
 
-![Driver schematic](Images/8digits.PNG)
+![Driver schematic](Images/8digits.jpeg)
