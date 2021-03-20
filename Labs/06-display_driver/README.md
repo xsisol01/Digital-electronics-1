@@ -6,7 +6,7 @@ https://github.com/xsisol01/Digital-electronics-1.git
 ## 1. Preparation tasks
 * Timing diagram figure for displaying value 3.142
 
-![Timing diagram](Images/.PNG)
+![Timing diagram](Images/timing.PNG)
 
 
 ## 2. Display driver
