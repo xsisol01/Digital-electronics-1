@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Mar 20 18:39:09 2021
+# Process ID: 13980
+# Current directory: D:/VUT/Digital-electronics-1/Labs/06-display_driver/display_driver/display_driver.runs/synth_1
+# Command line: vivado.exe -log driver_7seg_4digits.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source driver_7seg_4digits.tcl
+# Log file: D:/VUT/Digital-electronics-1/Labs/06-display_driver/display_driver/display_driver.runs/synth_1/driver_7seg_4digits.vds
+# Journal file: D:/VUT/Digital-electronics-1/Labs/06-display_driver/display_driver/display_driver.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source driver_7seg_4digits.tcl -notrace
