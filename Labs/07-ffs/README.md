@@ -90,4 +90,4 @@ https://github.com/xsisol01/Digital-electronics-1.git
 
 * Image of the shift register schenatic
 
-![Stopwatch schematic](Images/.jpeg)
+![shift register schematic](Images/.jpeg)
