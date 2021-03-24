@@ -4,19 +4,45 @@
 https://github.com/xsisol01/Digital-electronics-1.git
 
 ## 1. Preparation tasks
-* Frequency tab
+* characteristic equation and table for D flip-flop
+
+   | **D** | **Qn** | **Q(n+1)** | **Comments** |
+   | :-: | :-: | :-: | :-- |
+   | 0 | 0 |  |  |
+   | 0 | 1 |  |  |
+   | 1 |  |  |  |
+   | 1 |  |  |  |
+
+* characteristic equation and table for JK flip-flop
+
+   | **J** | **K** | **Qn** | **Q(n+1)** | **Comments** |
+   | :-: | :-: | :-: | :-: | :-- |
+   | 0 | 0 | 0 | 0 | No change |
+   | 0 | 0 | 1 | 1 | No change |
+   | 0 |  |  |  |  |
+   | 0 |  |  |  |  |
+   | 1 |  |  |  |  |
+   | 1 |  |  |  |  |
+   | 1 |  |  |  |  |
+   | 1 |  |  |  |  |
+
+* characteristic equation and table for T flip-flop
+
+   | **T** | **Qn** | **Q(n+1)** | **Comments** |
+   | :-: | :-: | :-: | :-- |
+   | 0 | 0 |  |  |
+   | 0 | 1 |  |  |
+   | 1 |  |  |  |
+   | 1 |  |  |  |
 
 
-
-
-
-## 2. Stopwatch
-* VHDL code of the process p_stopwatch_cnt 
+## 2. D-Latch
+* VHDL code of the process p_d_latch
 
 ```vhdl
  
 ```    
-* VHDL code of the simulation process p_stimulus
+* VHDL reset and stimulus processes from tb_d_latch
 
 ```vhdl
       
@@ -24,16 +50,44 @@ https://github.com/xsisol01/Digital-electronics-1.git
 
 * Screenshot with simulated time waveforms  
 
-![stopwatch waveform](Images/.PNG)
+![Dlatch waveform](Images/.PNG)
 
-* VHDL code of the top layer
+## 3. Flip-flops
+
+* VHDL code of p_d_ff_arst
+
+```vhdl
+
+```
+* VHDL code of p_d_ff_rst
+
+```vhdl
+
+```
+* VHDL code of p_jk_ff_rst
+
+```vhdl
+
+```
+* VHDL code of p_t_ff_rst
 
 ```vhdl
 
 ```
 
-## 3. Stopwatch with minutes 
+* VHDL clock, reset, stimulus processes from testbech files
 
-* Image of the stopwatch schematic
+```vhdl
+
+```
+* Screenshot with simulated time waveforms
+
+![ff wave forms](Images/.PNG)
+
+
+
+## 4. Shift register
+
+* Image of the shift register schenatic
 
 ![Stopwatch schematic](Images/.jpeg)
