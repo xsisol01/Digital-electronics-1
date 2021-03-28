@@ -4,12 +4,17 @@
 https://github.com/xsisol01/Digital-electronics-1.git
 
 ## 1. Preparation tasks
+* Characteristic equations
 
+![Characteristic equations](images/eq.gif)
+<!--
 \begin{align*}
-    q_{n+1}^D =&~ \\
-    q_{n+1}^{JK} =&\\
-    q_{n+1}^T =&\\
-\end{align*}
+    q_{n+1}^D = &~ d &\\
+    q_{n+1}^{JK} = &~ j\cdot \overline{q_n}\ +\overline{k}\cdot q_n &\\
+    q_{n+1}^T =&~ t\cdot \overline{q_n}\ +\overline{t}\cdot q_n &\\
+\end{align*}-->
+
+* Completed table for D FF
 
    | **clk** | **d** | **q(n)** | **q(n+1)** | **Comments** |
    | :-: | :-: | :-: | :-: | :-- |
@@ -17,6 +22,9 @@ https://github.com/xsisol01/Digital-electronics-1.git
    | ![rising](Images/eq_uparrow.png) | 0 | 1 | 0 | Input signal is sampled at the rising edge of clk and stored to FF |
    | ![rising](Images/eq_uparrow.png) | 1 | 0 | 1 | Input signal is sampled at the rising edge of clk and stored to FF |
    | ![rising](Images/eq_uparrow.png) | 1 | 1 | 1 | Input signal is sampled at the rising edge of clk and stored to FF |
+   
+   
+* Completed table for JK FF
 
    | **clk** | **j** | **k** | **q(n)** | **q(n+1)** | **Comments** |
    | :-: | :-: | :-: | :-: | :-: | :-- |
@@ -28,6 +36,8 @@ https://github.com/xsisol01/Digital-electronics-1.git
    | ![rising](Images/eq_uparrow.png) | 1 | 0 | 1 | 1 | Set |
    | ![rising](Images/eq_uparrow.png) | 1 | 1 | 0 | 1 | Toggle |
    | ![rising](Images/eq_uparrow.png) | 1 | 1 | 1 | 0 | Toggle |
+
+* Completed table for T FF
 
    | **clk** | **t** | **q(n)** | **q(n+1)** | **Comments** |
    | :-: | :-: | :-: | :-: | :-- |
