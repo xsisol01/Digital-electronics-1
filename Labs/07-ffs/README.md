@@ -4,36 +4,36 @@
 https://github.com/xsisol01/Digital-electronics-1.git
 
 ## 1. Preparation tasks
-* characteristic equation and table for D flip-flop
+\begin{align*}
+    q_{n+1}^D =& d \\
+    q_{n+1}^{JK} =&\\
+    q_{n+1}^T =&\\
+\end{align*}-->
 
-   | **D** | **Qn** | **Q(n+1)** | **Comments** |
-   | :-: | :-: | :-: | :-- |
-   | 0 | 0 | Q |  |
-   | 0 | 1 | 0 |  |
-   | 1 | 0 | 1 |  |
-   | 1 | 1 | 1 |  |
-
-* characteristic equation and table for JK flip-flop
-
-   | **J** | **K** | **Qn** | **Q(n+1)** | **Comments** |
+   | **clk** | **d** | **q(n)** | **q(n+1)** | **Comments** |
    | :-: | :-: | :-: | :-: | :-- |
-   | 0 | 0 | 0 | 0 | No change |
-   | 0 | 0 | 1 | 1 | No change |
-   | 0 | 1 | 0 | 0 | Reset |
-   | 0 | 1 | 1 | 0 | Reset |
-   | 1 | 0 | 0 | 1 | Set |
-   | 1 | 0 | 1 | 1 | Set |
-   | 1 | 1 | 0 | 1 | Toggle |
-   | 1 | 1 | 1 | 0 | Toggle |
+   | ![rising](Images/eq_uparrow.png) | 0 | 0 | 0 | Input signal is sampled at the rising edge of clk and stored to FF |
+   | ![rising](Images/eq_uparrow.png) | 0 | 1 | 0 | Input signal is sampled at the rising edge of clk and stored to FF |
+   | ![rising](Images/eq_uparrow.png) | 1 | 0 | 1 | Input signal is sampled at the rising edge of clk and stored to FF |
+   | ![rising](Images/eq_uparrow.png) | 1 | 1 | 1 | Input signal is sampled at the rising edge of clk and stored to FF |
 
-* characteristic equation and table for T flip-flop
+   | **clk** | **j** | **k** | **q(n)** | **q(n+1)** | **Comments** |
+   | :-: | :-: | :-: | :-: | :-: | :-- |
+   | ![rising](Images/eq_uparrow.png) | 0 | 0 | 0 | 0 | No change |
+   | ![rising](Images/eq_uparrow.png) | 0 | 0 | 1 | 1 | No change |
+   | ![rising](Images/eq_uparrow.png) | 0 | 1 | 0 | 0 | Reset |
+   | ![rising](Images/eq_uparrow.png) | 0 | 1 | 1 | 0 | Reset |
+   | ![rising](Images/eq_uparrow.png) | 1 | 0 | 0 | 1 | Set |
+   | ![rising](Images/eq_uparrow.png) | 1 | 0 | 1 | 1 | Set |
+   | ![rising](Images/eq_uparrow.png) | 1 | 1 | 0 | 1 | Toggle |
+   | ![rising](Images/eq_uparrow.png) | 1 | 1 | 1 | 0 | Toggle |
 
-   | **T** | **Qn** | **Q(n+1)** | **Comments** |
-   | :-: | :-: | :-: | :-- |
-   | 0 | 0 | 0 | No change |
-   | 0 | 1 | 1 | No change |
-   | 1 | 0 | 1 | Invert |
-   | 1 | 1 | 0 | Invert |
+   | **clk** | **t** | **q(n)** | **q(n+1)** | **Comments** |
+   | :-: | :-: | :-: | :-: | :-- |
+   | ![rising](Images/eq_uparrow.png) | 0 | 0 | 0 | No change |
+   | ![rising](Images/eq_uparrow.png) | 0 | 1 | 1 | No change |
+   | ![rising](Images/eq_uparrow.png) | 1 | 0 | 1 | Invert |
+   | ![rising](Images/eq_uparrow.png) | 1 | 1 | 0 | Invert |
 
 
 ## 2. D-Latch
