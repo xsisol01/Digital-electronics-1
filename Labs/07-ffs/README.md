@@ -6,7 +6,7 @@ https://github.com/xsisol01/Digital-electronics-1.git
 ## 1. Preparation tasks
 * Characteristic equations
 
-![Characteristic equations](images/eq.gif)
+![Characteristic equations](images/chareq.gif)
 <!--
 \begin{align*}
     q_{n+1}^D = &~ d &\\
