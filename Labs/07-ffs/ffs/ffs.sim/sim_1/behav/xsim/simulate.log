@@ -1,0 +1,12 @@
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+Note: Stimulus process started
+Time: 0 ps  Iteration: 0  Process: /tb_d_latch/p_stimulus  File: D:/VUT/Digital-electronics-1/Labs/07-ffs/ffs/ffs.srcs/sim_1/new/tb_d_latch.vhd
+Note: s_en setted to one -> Reseting output q
+Time: 60 ns  Iteration: 0  Process: /tb_d_latch/p_stimulus  File: D:/VUT/Digital-electronics-1/Labs/07-ffs/ffs/ffs.srcs/sim_1/new/tb_d_latch.vhd
+Note: s_en setted to one -> Seting output q
+Time: 70 ns  Iteration: 0  Process: /tb_d_latch/p_stimulus  File: D:/VUT/Digital-electronics-1/Labs/07-ffs/ffs/ffs.srcs/sim_1/new/tb_d_latch.vhd
+Note: s_en setted to zero -> remember/hold value
+Time: 140 ns  Iteration: 0  Process: /tb_d_latch/p_stimulus  File: D:/VUT/Digital-electronics-1/Labs/07-ffs/ffs/ffs.srcs/sim_1/new/tb_d_latch.vhd
+Note: Stimulus process finished
+Time: 220 ns  Iteration: 0  Process: /tb_d_latch/p_stimulus  File: D:/VUT/Digital-electronics-1/Labs/07-ffs/ffs/ffs.srcs/sim_1/new/tb_d_latch.vhd
