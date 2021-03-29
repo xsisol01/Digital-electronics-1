@@ -51,17 +51,123 @@ https://github.com/xsisol01/Digital-electronics-1.git
 * VHDL code of the process p_d_latch
 
 ```vhdl
- 
+p_d_latch : process (d, arst, en)
+    begin
+        if (arst = '1') then
+            q <= '0';
+            q_bar <= '1';
+        elsif(en = '1') then 
+            q <= d;
+            q_bar <= not d;    
+        end if;
+ end process p_d_latch;
 ```    
 * VHDL reset and stimulus processes from tb_d_latch
 
 ```vhdl
+p_reset_gen : process
+ begin
+	 s_arst <= '0';
+	 wait for 38 ns;
+	 
+	 -- Reset activated
+	 s_arst <= '1';
+	 wait for 53 ns;
+
+	 --Reset deactivated
+	 s_arst <= '0';
+	
+	 wait for 80 ns;
+	 s_arst <= '1';
+
+	 wait;
+ end process p_reset_gen;
+
+--------------------------------------------------------------------
+-- Data generation process
+--------------------------------------------------------------------
+p_stimulus : process
+begin
+	report "Stimulus process started" severity note;
+	
+	s_d  <= '0';
+	s_en <= '0';
+	wait for 10 ns;
+	
+	--remember/hold values (no value to hold)
+	s_d  <= '1';
+	wait for 10 ns;
+	s_d  <= '0';
+	wait for 10 ns;
+	s_d  <= '1';
+	--reset set to 1 -> all values '0' except q_bar
+	wait for 10 ns;
+	s_d  <= '0';
+	wait for 10 ns;
+	s_d  <= '1';
+	wait for 10 ns;
+
+	--Reseting output q
+	s_d  <= '0';
+	s_en <= '1';
+	assert ((s_arst = '0') and (s_en = '1'))
+	report "s_en setted to one -> Reseting output q" severity note;	
+	wait for 10 ns;
+	
+	--Seting output q - en is setted to 1
+	s_d  <= '1';
+	assert ((s_arst = '0') and (s_en = '1'))
+	report "s_en setted to one -> Seting output q" severity note;	
+	wait for 10 ns;
+	
+	
+	s_d  <= '0';
+	wait for 10 ns;   
+	s_d  <= '1';
+	wait for 10 ns;
+	s_d  <= '0';
+	wait for 10 ns;
+	s_d  <= '1';
+	--reset set to 0 - again operating 
+	wait for 10 ns;
+	s_d  <= '0';
+	wait for 10 ns;
+	s_d  <= '1';
+	wait for 10 ns;
+
+
+	-- Remember/hold values 
+	s_en <= '0';
+	assert ((s_arst = '0') and (s_en = '0'))
+	report "s_en setted to zero -> remember/hold value" severity note;
+	wait for 10 ns;
+	
+	s_d  <= '1';
+	wait for 10 ns;
+	s_d  <= '0';
+	wait for 10 ns;
+	s_d  <= '1';
+	wait for 10 ns;
+	s_d  <= '0';
+	wait for 10 ns;
+	s_d  <= '1';
+	--reset set to 1 - all values should be '0'
+	wait for 10 ns;
+	s_d  <= '0';
+	wait for 10 ns;
+	s_d  <= '1';
+	wait for 10 ns;
+	s_d  <= '0';
+	
+	report "Stimulus process finished" severity note;
+	wait;
+end process p_stimulus;
       
 ```
 
 * Screenshot with simulated time waveforms  
 
-![Dlatch waveform](Images/.PNG)
+![Dlatch waveform](Images/dlatchsim.PNG)
 
 ## 3. Flip-flops
 
