@@ -457,16 +457,16 @@ end process p_t_ff_rst;
      p_reset_gen : process
         begin
             s_rst <= '0';
-            wait for 28 ns;
+            wait for 18 ns;
             
             -- Reset activated
             s_rst <= '1';
-            wait for 13 ns;
+            wait for 12 ns;
     
             --Reset deactivated
             s_rst <= '0';
             
-            wait for 17 ns;
+            wait for 49 ns;
             
             s_rst <= '1';
             wait for 33 ns;
@@ -551,8 +551,13 @@ end process p_t_ff_rst;
 * Screenshot with simulated time waveforms
 
 ![ff wave forms](Images/darst.PNG)
-![ff wave forms](Images/.PNG)
-![ff wave forms](Images/.PNG)
+
+![ff wave forms](Images/drst.PNG)
+
+![ff wave forms](Images/jkrst.PNG)
+
+![ff wave forms](Images/trst.PNG)
+
 
 
 
