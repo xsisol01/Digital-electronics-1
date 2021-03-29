@@ -619,12 +619,16 @@ end process p_t_ff_rst;
 ```
 * Screenshot with simulated time waveforms
 
+d_ff_arst
 ![ff wave forms](Images/darst.PNG)
 
+d_ff_rst
 ![ff wave forms](Images/drst.PNG)
 
+jk_ff_rst
 ![ff wave forms](Images/jkrst.PNG)
 
+t_ff_rst
 ![ff wave forms](Images/trst.PNG)
 
 
@@ -634,4 +638,4 @@ end process p_t_ff_rst;
 
 * Image of the shift register schenatic
 
-![shift register schematic](Images/.jpeg)
+![shift register schematic](Images/siftimg.jpeg)
