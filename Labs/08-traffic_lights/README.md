@@ -14,7 +14,7 @@ https://github.com/xsisol01/Digital-electronics-1.git
 
 * Figure with connection of RGB LEDs on NexysA7 Board
 
-![RGB nexys schematic](Images/rgbfigure.PNG)
+![RGB nexys schematic](Images/rgbfigure.png)
 
 * Table with color settings
 
