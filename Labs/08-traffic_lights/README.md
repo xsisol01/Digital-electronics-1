@@ -156,12 +156,166 @@ p_output_fsm : process(s_state)
 ## 3. Smart controller
 * State table
 
+![State table smart](Images/state_table_smart.PNG)
+
 * State diagram
 
-![Driver schematic](Images/8digits.jpeg)
+![State diagram smart](Images/diagram_smart.PNG)
 
 * Listing of VHDL code of sequential process p_smart_traffic_fsm
 
 ```vhdl
+    p_smart_traffic_fsm : process(clk)
+    begin
+        if rising_edge(clk) then
+            if (reset = '1') then       -- Synchronous reset
+                s_state <= STOP ;      -- Set initial state
+                s_cnt   <= c_ZERO;      -- Clear all bits
 
+            elsif (s_en = '1') then
+                -- Every 250 ms, CASE checks the value of the s_state 
+                -- variable and changes to the next state according 
+                -- to the delay value.
+                
+                --NO CARS coming to fork
+                if ( south_sensor = '0' and west_sensor = '0') then
+                    case s_state is
+                         when STOP =>
+                              s_state <= SOUTH_GO;
+                         when SOUTH_GO =>
+                              s_state <= SOUTH_GO;
+                         when SOUTH_WAIT =>
+                           
+                           if( s_cnt < c_DELAY_05SEC) then
+                              s_cnt <= s_cnt + 1/2;
+                           else
+                              s_state <= WEST_GO;
+                              s_cnt <= c_ZERO;  
+                           end if;
+                         when WEST_GO =>
+                              s_state <= WEST_GO; 
+                         when WEST_WAIT =>
+                          
+                           if( s_cnt < c_DELAY_05SEC) then
+                              s_cnt <= s_cnt + 1/2;
+                           else
+                              s_state <= SOUTH_GO;
+                              s_cnt <= c_ZERO;  
+                           end if;     
+                        end case;
+                -- CAR coming from SOUTH        
+                elsif ( south_sensor = '1' and west_sensor = '0') then
+                      case s_state is
+                        when STOP =>
+                            s_state <= SOUTH_GO;
+                      
+                        when SOUTH_GO =>          
+                              s_state <= SOUTH_GO;
+                              
+                         when SOUTH_WAIT =>
+                           
+                           if( s_cnt < c_DELAY_05SEC) then
+                              s_cnt <= s_cnt + 1/2;
+                           else
+                              s_state <= STOP;
+                              s_cnt <= c_ZERO;  
+                           end if;
+                         when WEST_GO =>
+                           
+                           if( s_cnt < c_DELAY_3SEC) then
+                              s_cnt <= s_cnt + 1;
+                           else
+                              s_state <= WEST_WAIT;
+                              s_cnt <= c_ZERO;  
+                           end if;
+                         when WEST_WAIT =>
+                           
+                           if( s_cnt < c_DELAY_05SEC) then
+                              s_cnt <= s_cnt + 1/2;
+                           else
+                              s_state <= SOUTH_GO;
+                              s_cnt <= c_ZERO;  
+                           end if;     
+                        end case;
+                -- CARS coming from WEST 
+                elsif ( south_sensor = '0' and west_sensor = '1') then
+                    case s_state is
+                        when STOP =>
+                            s_state <= WEST_GO;
+                      
+                        when WEST_GO =>          
+                              s_state <= WEST_GO;
+                              
+                         when SOUTH_WAIT =>
+                           
+                           if( s_cnt < c_DELAY_05SEC) then
+                              s_cnt <= s_cnt + 1/2;
+                           else
+                              s_state <= WEST_GO;
+                              s_cnt <= c_ZERO;  
+                           end if;
+                         when SOUTH_GO =>
+                           
+                           if( s_cnt < c_DELAY_3SEC) then
+                              s_cnt <= s_cnt + 1;
+                           else
+                              s_state <= SOUTH_WAIT;
+                              s_cnt <= c_ZERO;  
+                           end if;
+                         when WEST_WAIT =>
+                           
+                           if( s_cnt < c_DELAY_05SEC) then
+                              s_cnt <= s_cnt + 1/2;
+                           else
+                              s_state <= STOP;
+                              s_cnt <= c_ZERO;  
+                           end if;     
+                        end case;
+                elsif ( south_sensor = '1' and west_sensor = '1') then
+                    case s_state is 
+                        when STOP => 
+                           
+                           if( s_cnt < c_DELAY_2SEC) then
+                              s_cnt <= s_cnt + 1;
+                           else
+                              s_state <= WEST_GO;
+                              s_cnt <= c_ZERO;  
+                           end if;   
+                        when WEST_GO => 
+                          
+                           if( s_cnt < c_DELAY_3SEC) then
+                              s_cnt <= s_cnt + 1;
+                           else
+                              s_state <= WEST_WAIT;
+                              s_cnt <= c_ZERO;  
+                           end if;
+                        when WEST_WAIT => 
+                           
+                           if( s_cnt < c_DELAY_05SEC) then
+                              s_cnt <= s_cnt + 1/2;
+                           else
+                              s_state <= SOUTH_GO;
+                              s_cnt <= c_ZERO;  
+                           end if;   
+                        when SOUTH_GO => 
+                           
+                           if( s_cnt < c_DELAY_3SEC) then
+                              s_cnt <= s_cnt + 1;
+                           else
+                              s_state <= SOUTH_WAIT;
+                              s_cnt <= c_ZERO;  
+                           end if; 
+                        when SOUTH_WAIT => 
+                           
+                           if( s_cnt < c_DELAY_05SEC) then
+                              s_cnt <= s_cnt + 1/2;
+                           else
+                              s_state <= STOP;
+                              s_cnt <= c_ZERO;  
+                           end if;  
+                        end case;      
+                end if;
+            end if; -- Synchronous reset
+        end if; -- Rising edge
+    end process p_smart_traffic_fsm;
 ```
