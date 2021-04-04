@@ -149,7 +149,7 @@ p_output_fsm : process(s_state)
 
 * Screenshot with simulated time waveforms  
 
-![traffic lights waveform](Images/waveforms_tfc.PNG)
+![traffic lights waveform](Images/waveform_tfc.PNG)
 
 
 
