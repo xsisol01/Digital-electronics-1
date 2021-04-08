@@ -87,7 +87,7 @@ begin
     -- The sequential process with synchronous reset and clock_enable 
     -- entirely controls the s_state signal by CASE statement.
     --------------------------------------------------------------------
-    p_traffic_fsm : process(clk)
+    p_smart_traffic_fsm : process(clk)
     begin
         if rising_edge(clk) then
             if (reset = '1') then       -- Synchronous reset
@@ -239,7 +239,7 @@ begin
                 end if;
             end if; -- Synchronous reset
         end if; -- Rising edge
-    end process p_traffic_fsm;
+    end process p_smart_traffic_fsm;
 
     --------------------------------------------------------------------
     -- p_output_fsm:
