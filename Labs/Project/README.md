@@ -1,3 +1,7 @@
+## KeyPad controll module
+
+este dopisat nejake info k modulu
+
 * VHDL code of KeyPad controll - keypad_to_num.vhdl
 
 ```vhdl
