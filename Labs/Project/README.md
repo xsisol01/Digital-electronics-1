@@ -279,3 +279,215 @@ end architecture testbench;
 * Image of simulation waveforms - simulating KeyPad controller module
 
 ![Keypad simulation waveforms](Images/TB_keypad.png)
+
+
+### RELÉ - VHDL
+
+```vhdl
+entity tlc is
+    port(
+        clk     : in  std_logic;
+        reset   : in  std_logic;
+        
+       -- autos1   : in  std_logic;
+       -- autos2   : in  std_logic;
+        
+        
+        -- Traffic lights (RGB LEDs) for two directions
+        kontrolka_o : out std_logic_vector(3 - 1 downto 0)
+       --alarm_o     : out std_logic_vector(3 - 1 downto 0)
+    );
+end entity tlc;
+```
+
+```vhdl
+p_smart_traffic_fsm : process(clk)
+    begin
+   
+   if rising_edge(clk) then
+            if (reset = '1') then       -- Synchronous reset
+                s_state2 <= zavrene_dvere ;      -- Set initial state
+                s_cnt   <= c_ZERO;      -- Clear all bits
+
+
+            elsif (s_en = '1') then
+                -- Every 250 ms, CASE checks the value of the s_state 
+                -- variable and changes to the next state according 
+                -- to the delay value.
+                 
+                 
+                  if (s_klavesnice = "1000") then
+                  s_cnt   <= c_ZERO; 
+               --  s_state2 <= otevrene_dvere ;
+                -- s_cnt   <= c_DELAY_7SEC; 
+                 
+                
+                case s_state2 is
+                
+                
+                when otevrene_dvere =>
+                     -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_7SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state2 <= zavirani_dveri;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO; --nulování zpoždění
+                        end if;
+                        
+                        
+
+                        when zavirani_dveri =>
+                     -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_3SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state2 <= zavrene_dvere;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO; --nulování zpoždění
+                        end if;
+                        
+                        
+                       --end case; 
+
+                     --case s_state2 is
+                         when zavrene_dvere =>
+                     -- Count up to c_DELAY_1SEC
+                        if (s_cnt < c_DELAY_7SEC) then
+                            
+                        else
+                            -- Move to the next state
+                            s_state2 <= otevrene_dvere;
+                            -- Reset local counter value
+                           
+                        end if;
+
+
+
+                  end case;
+                 -- end if;
+                 end if;  --konec podmínky u s_klavesnice='1'
+         
+            end if;
+  end if;
+
+--end if;
+          
+        -- Rising edge
+    end process p_smart_traffic_fsm;
+```
+
+
+```vhdl
+ p_output_fsm : process(s_state2)
+    begin
+        case s_state2 is
+        
+ 
+            when zavrene_dvere =>
+                kontrolka_o <= "100";
+               -- alarm_o <= "010";--alarm
+                --alarm_o <= "111";--alarm
+               -- alarm_o <= "010";--alarm
+                
+            when otevrene_dvere =>
+                kontrolka_o <= "010";   
+
+
+            when zavirani_dveri =>
+                 kontrolka_o <= "110";   
+
+
+        end case;
+    end process p_output_fsm;
+```
+
+
+### RELÉ - SIMULACE
+
+```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+
+------------------------------------------------------------------------
+-- Entity declaration for testbench
+------------------------------------------------------------------------
+entity tb_tlc is
+    -- Entity of testbench is always empty
+end entity tb_tlc;
+
+------------------------------------------------------------------------
+-- Architecture body for testbench
+------------------------------------------------------------------------
+architecture testbench of tb_tlc is
+
+    -- Local constants
+    constant c_CLK_100MHZ_PERIOD : time := 10 ns;
+
+    --Local signals
+    signal s_clk_100MHz : std_logic;
+    signal s_reset      : std_logic;
+    
+   -- signal s_auto_1      : std_logic;
+   -- signal s_auto_2      : std_logic;
+    
+    signal s_kontrolka      : std_logic_vector(3 - 1 downto 0);
+    --signal s_alarm          : std_logic_vector(3 - 1 downto 0);
+
+begin
+    -- Connecting testbench signals with tlc entity (Unit Under Test)
+    uut_tlc : entity work.tlc
+        port map(
+            clk     => s_clk_100MHz,
+            reset   => s_reset,
+            
+           --autos1   => s_auto_1,
+          -- autos2   => s_auto_2,
+            
+            kontrolka_o => s_kontrolka
+           --alarm_o => s_alarm
+
+        );
+
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 10000 ns loop   -- 10 usec of simulation
+            s_clk_100MHz <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk_100MHz <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;
+    end process p_clk_gen;
+
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin
+        s_reset <= '0';
+      --  s_auto_1 <='0';
+       -- s_auto_2 <='0'; wait for 20 ns;
+
+        
+        wait;
+    end process p_reset_gen;
+
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+    p_stimulus : process
+    begin
+        -- No input data needed.
+        wait;
+    end process p_stimulus;
+
+end architecture testbench;
+```
+![image](https://user-images.githubusercontent.com/78815984/116144029-204f0e80-a6dc-11eb-95af-77912a6a8fd0.png)
+
