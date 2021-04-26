@@ -3,10 +3,10 @@
 * Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs
 * Topic n.2 - Door lock system with PIN (4-digit) terminal, 4x3 push buttons, 4-digit 7-segment display, relay for door lock control.
 * Collaborators:
-** Filip Šišolák
-** Barbora Šimková
-** Bohuslav Šotola
-** Tomáš Škurla
+  1. Filip Šišolák
+  2. Barbora Šimková
+  3. Bohuslav Šotola
+  4. Tomáš Škurla
 
 ## KeyPad controll module
 
