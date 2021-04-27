@@ -321,24 +321,68 @@ end architecture testbench;
 ### RELÉ - VHDL
 
 ```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+------------------------------------------------------------------------
+-- Entity declaration for traffic light controller
+------------------------------------------------------------------------
 entity tlc is
     port(
-        clk     : in  std_logic;
-        reset   : in  std_logic;
+        clk          : in  std_logic;
+        reset        : in  std_logic;
         
-       -- autos1   : in  std_logic;
-       -- autos2   : in  std_logic;
-        
-        
-        -- Traffic lights (RGB LEDs) for two directions
+        door_o      : out  std_logic; 
         kontrolka_o : out std_logic_vector(3 - 1 downto 0)
-       --alarm_o     : out std_logic_vector(3 - 1 downto 0)
+
     );
 end entity tlc;
-```
 
-```vhdl
-p_smart_traffic_fsm : process(clk)
+------------------------------------------------------------------------
+-- Architecture declaration for traffic light controller
+------------------------------------------------------------------------
+architecture Behavioral of tlc is
+
+                
+    type   t_state2 is (zavrene_dvere, otevrene_dvere,zavirani_dveri);                   
+
+    signal s_state2  : t_state2;
+
+   
+    signal s_en             : std_logic;
+    signal s_klavesnice     : std_logic;
+    
+    
+    signal   s_cnt  : unsigned(5 - 1 downto 0);
+
+    
+    constant c_DELAY_7SEC : unsigned(5 - 1 downto 0) := b"1_1100";
+    constant c_DELAY_3SEC : unsigned(5 - 1 downto 0) := b"0_1100";
+    constant c_DELAY_1SEC : unsigned(5 - 1 downto 0) := b"0_0100";
+    constant c_ZERO       : unsigned(5 - 1 downto 0) := b"0_0000";
+    
+    
+    
+    constant c_heslo : std_logic:= '1';
+
+begin
+
+    --------------------------------------------------------------------
+    -- Instance (copy) of clock_enable entity generates an enable pulse
+    -- every 250 ms (4 Hz). Remember that the frequency of the clock 
+    -- signal is 100 MHz.
+    
+    s_en <= '1';
+    s_klavesnice <= '1';--Vstup z klávesnice. Nyní je zde hodnota 1 pro účely simulace
+
+
+      --------------------------------------------------------------------
+    -- p_smart_traffic_fsm:
+    -- The sequential process with synchronous reset and clock_enable 
+    -- entirely controls the s_state signal by CASE statement.
+    --------------------------------------------------------------------
+ p_smart_traffic_fsm : process(clk)
     begin
    
    if rising_edge(clk) then
@@ -348,41 +392,35 @@ p_smart_traffic_fsm : process(clk)
 
 
             elsif (s_en = '1') then
-                -- Every 250 ms, CASE checks the value of the s_state 
-                -- variable and changes to the next state according 
-                -- to the delay value.
                  
                  
-                  if (s_klavesnice = "1000") then
+                  if (s_klavesnice = c_heslo) then
                   s_cnt   <= c_ZERO; 
-               --  s_state2 <= otevrene_dvere ;
-                -- s_cnt   <= c_DELAY_7SEC; 
-                 
-                
+
+  
                 case s_state2 is
                 
                 
                 when otevrene_dvere =>
-                     -- Count up to c_DELAY_1SEC
+                     
                         if (s_cnt < c_DELAY_7SEC) then
                             s_cnt <= s_cnt + 1;
                         else
                             -- Move to the next state
                             s_state2 <= zavirani_dveri;
-                            -- Reset local counter value
+                          
                             s_cnt   <= c_ZERO; --nulování zpoždění
                         end if;
                         
                         
 
                         when zavirani_dveri =>
-                     -- Count up to c_DELAY_1SEC
                         if (s_cnt < c_DELAY_3SEC) then
                             s_cnt <= s_cnt + 1;
                         else
                             -- Move to the next state
                             s_state2 <= zavrene_dvere;
-                            -- Reset local counter value
+                          
                             s_cnt   <= c_ZERO; --nulování zpoždění
                         end if;
                         
@@ -391,7 +429,6 @@ p_smart_traffic_fsm : process(clk)
 
                      --case s_state2 is
                          when zavrene_dvere =>
-                     -- Count up to c_DELAY_1SEC
                         if (s_cnt < c_DELAY_7SEC) then
                             
                         else
@@ -401,37 +438,34 @@ p_smart_traffic_fsm : process(clk)
                            
                         end if;
 
-
-
                   end case;
-                 -- end if;
-                 end if;  --konec podmínky u s_klavesnice='1'
+               
+                 end if; 
          
             end if;
   end if;
 
---end if;
-          
-        -- Rising edge
+
     end process p_smart_traffic_fsm;
-```
 
-
-```vhdl
- p_output_fsm : process(s_state2)
+    --------------------------------------------------------------------
+    -- p_output_fsm:
+    -- The combinatorial process is sensitive to state changes, and sets
+    -- the output signals accordingly. This is an example of a Moore 
+    -- state machine because the output is set based on the active state.
+    --------------------------------------------------------------------
+    p_output_fsm : process(s_state2)
     begin
         case s_state2 is
         
  
             when zavrene_dvere =>
                 kontrolka_o <= "100";
-               -- alarm_o <= "010";--alarm
-                --alarm_o <= "111";--alarm
-               -- alarm_o <= "010";--alarm
+                door_o <='0'; --dveře jsou zavřené
                 
             when otevrene_dvere =>
                 kontrolka_o <= "010";   
-
+                 door_o <='1'; --dveře jsou otevřené
 
             when zavirani_dveri =>
                  kontrolka_o <= "110";   
@@ -439,6 +473,10 @@ p_smart_traffic_fsm : process(clk)
 
         end case;
     end process p_output_fsm;
+    
+    
+ 
+end architecture Behavioral;
 ```
 
 
@@ -466,12 +504,10 @@ architecture testbench of tb_tlc is
     --Local signals
     signal s_clk_100MHz : std_logic;
     signal s_reset      : std_logic;
-    
-   -- signal s_auto_1      : std_logic;
-   -- signal s_auto_2      : std_logic;
+
     
     signal s_kontrolka      : std_logic_vector(3 - 1 downto 0);
-    --signal s_alarm          : std_logic_vector(3 - 1 downto 0);
+
 
 begin
     -- Connecting testbench signals with tlc entity (Unit Under Test)
@@ -479,12 +515,8 @@ begin
         port map(
             clk     => s_clk_100MHz,
             reset   => s_reset,
-            
-           --autos1   => s_auto_1,
-          -- autos2   => s_auto_2,
-            
+
             kontrolka_o => s_kontrolka
-           --alarm_o => s_alarm
 
         );
 
@@ -508,10 +540,7 @@ begin
     p_reset_gen : process
     begin
         s_reset <= '0';
-      --  s_auto_1 <='0';
-       -- s_auto_2 <='0'; wait for 20 ns;
-
-        
+  
         wait;
     end process p_reset_gen;
 
@@ -520,15 +549,17 @@ begin
     --------------------------------------------------------------------
     p_stimulus : process
     begin
-        -- No input data needed.
+        
         wait;
     end process p_stimulus;
 
 end architecture testbench;
 ```
+![image](https://user-images.githubusercontent.com/78815984/116296191-34f1dc00-a79a-11eb-93df-6a59b669bd06.png)
 
 
 ### STAVOVÝ DIAGRAM
+![image](https://user-images.githubusercontent.com/78815984/116296179-2f949180-a79a-11eb-9717-fded365089d7.png)
 
 
 
