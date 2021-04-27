@@ -278,7 +278,7 @@ end architecture testbench;
 
 * Image of simulation waveforms - simulating KeyPad controller module
 
-![Keypad simulation waveforms](Images/TB_keypad.png)
+![Keypad simulation waveforms](Images/TB_keypad.PNG)
 
 
 ### RELÉ - VHDL
