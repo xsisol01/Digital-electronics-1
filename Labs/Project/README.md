@@ -25,6 +25,22 @@ Module "keypad_to_num" for controlling 4x3 keypad contains from 3 input ports ->
 Keypad_to_num works on basis of state machine where each state change to another after defined time.
 Each key represent hex signal - same as the label of the button on keypad for example 7 means x"0111". All other combinations are in table.
 
+##### Table - Key pressed on keypad => num_o
+| Key | num_o | Value |
+| :-: | :-: | :-: | 
+| 0 | P17 | 0 | 
+| 1 | M17 | 1 | 
+| 2 | M18 | 2 | 
+| 3 | P18 | 3 | 
+| 4 | N17 | 4 | 
+| 5 | P17 | 5 | 
+| 6 | M17 | 6 | 
+| 7 | M18 | 7 | 
+| 8 | P18 | 8 |  
+| 9 | N17 | 9 | 
+| * | P17 | DELETE | 
+| # | M17 | ENTER | 
+
 
 
 
