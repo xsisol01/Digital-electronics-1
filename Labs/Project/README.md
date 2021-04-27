@@ -493,3 +493,444 @@ end architecture testbench;
 
 ### STAVOVÝ DIAGRAM
 ![image](https://user-images.githubusercontent.com/78815984/116148079-bdac4180-a6e0-11eb-90fa-7f8db7c9945a.png)
+
+
+
+
+# Driver for multiple seven-segment displays
+
+### Schematic of 'driver_7seg_4digits' with connection to four 7 segment displays
+
+![driver](Images\Four-digit driver-7 seg v2.png)
+
+### Schematic of four 7 segment displays with connection to (Arty-A7-100T) -not yet :) 
+
+(překreslím)
+
+![schematic](Images\7seg4-schema.png)
+
+### Table with connection of four 7 segment displays to Arty-A7-100T
+
+**Pmod JB**
+
+| Pmod JB | Connection | Cathodes |
+| :-----: | :--------: | :------: |
+|  Pin 1  |    E15     |    CA    |
+|  Pin 2  |    E16     |    CB    |
+|  Pin 3  |    D15     |    CC    |
+|  Pin 4  |    C15     |    CD    |
+|  Pin 7  |    J17     |    CE    |
+|  Pin 8  |    J18     |    CF    |
+|  Pin 9  |    K15     |    CG    |
+| Pin 10  |    J15     |    DP    |
+
+**Pmod JC**
+
+| Pmod JC | Connection | Anodes |
+| :-----: | :--------: | :----: |
+|  Pin 1  |    U12     |  AN0   |
+|  Pin 2  |    V12     |  AN1   |
+|  Pin 3  |    V10     |  AN2   |
+|  Pin 4  |    V11     |  AN3   |
+|  Pin 7  |    U14     |   -    |
+|  Pin 8  |    V14     |   -    |
+|  Pin 9  |    T13     |   -    |
+| Pin 10  |    U13     |   -    |
+
+### Driver for 7 segment displays
+
+##### ` driver_7seg_4digits`
+
+```vhdl
+------------------------------------------------------------------------
+--
+-- Copyright (c) 2020 Tomas Fryza
+-- Dept. of Radio Electronics, Brno University of Technology, Czechia
+-- This work is licensed under the terms of the MIT license.
+--
+------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+------------------------------------------------------------------------
+-- Entity declaration for display driver
+------------------------------------------------------------------------
+entity driver_7seg_4digits is
+    port(
+        clk     : in  std_logic;        -- Main clock
+        reset   : in  std_logic;        -- Synchronous reset
+        -- 4-bit input values for individual digits
+        data0_i : in  std_logic_vector(4 - 1 downto 0);
+        data1_i : in  std_logic_vector(4 - 1 downto 0);
+        data2_i : in  std_logic_vector(4 - 1 downto 0);
+        data3_i : in  std_logic_vector(4 - 1 downto 0);
+        -- Cathode values for individual segments
+        seg_o   : out std_logic_vector(7 - 1 downto 0);
+        -- Common anode signals to individual displays
+        dig_o   : out std_logic_vector(4 - 1 downto 0)
+    );
+end entity driver_7seg_4digits;
+
+------------------------------------------------------------------------
+-- Architecture declaration for display driver
+------------------------------------------------------------------------
+architecture Behavioral of driver_7seg_4digits is
+
+    -- Internal clock enable
+    signal s_en  : std_logic;
+    -- Internal 2-bit counter for multiplexing 4 digits
+    signal s_cnt : std_logic_vector(2 - 1 downto 0);
+    -- Internal 4-bit value for 7-segment decoder
+    signal s_hex : std_logic_vector(4 - 1 downto 0);
+
+begin
+    --------------------------------------------------------------------
+    -- Instance (copy) of clock_enable entity generates an enable pulse
+    -- every 4 ms
+    clk_en0 : entity work.clock_enable
+        generic map(
+        g_MAX => 4
+            --- WRITE YOUR CODE HERE
+        )
+        port map(
+         clk    => clk, 
+         reset  => reset,
+         ce_o   => s_en 
+            --- WRITE YOUR CODE HERE
+        );
+
+    --------------------------------------------------------------------
+    -- Instance (copy) of cnt_up_down entity performs a 2-bit down
+    -- counter
+    bin_cnt0 : entity work.cnt_up_down
+        generic map(
+        g_CNT_WIDTH => 2
+            --- WRITE YOUR CODE HERE
+        )
+        port map(
+        clk         => clk,   
+        reset       => reset,   
+        en_i        => s_en,  
+        cnt_up_i    => '0',
+        cnt_o       => s_cnt
+            --- WRITE YOUR CODE HERE
+        );
+
+    --------------------------------------------------------------------
+    -- Instance (copy) of hex_7seg entity performs a 7-segment display
+    -- decoder
+    hex2seg : entity work.hex_7seg
+        port map(
+            hex_i => s_hex,
+            seg_o => seg_o
+        );
+
+    --------------------------------------------------------------------
+    -- p_mux:
+    -- A combinational process that implements a multiplexer for
+    -- selecting data for a single digit, a decimal point signal, and 
+    -- switches the common anodes of each display.
+    --------------------------------------------------------------------
+    p_mux : process(s_cnt, data0_i, data1_i, data2_i, data3_i)
+    begin
+        case s_cnt is
+            when "11" =>
+                s_hex <= data3_i;
+                dig_o <= "0111";
+
+            when "10" =>
+                s_hex <= data2_i;
+                dig_o <= "1011";
+
+            when "01" =>
+                s_hex <= data1_i;
+                dig_o <= "1101";
+
+            when others =>
+                s_hex <= data0_i;
+                dig_o <= "1110";
+        end case;
+    end process p_mux;
+
+end architecture Behavioral;
+```
+
+##### `hex_7seg`
+**Decoder truth table for common anode 7-segment display:**
+
+| **Hex** | **Inputs** | **A** | **B** | **C** | **D** | **E** | **F** | **G** |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| 0 | 0000 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| 1 | 0001 | 1 | 0 | 0 | 1 | 1 | 1 | 1 |
+| 2 | 0010 | 0 | 0 | 1 | 0 | 0 | 1 | 0 |
+| 3 | 0011 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
+| 4 | 0100 | 1 | 0 | 0 | 1 | 1 | 0 | 0 |
+| 5 | 0101 | 0 | 1 | 0 | 0 | 1 | 0 | 0 |
+| 6 | 0110 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
+| 7 | 0111 | 0 | 0 | 0 | 1 | 1 | 1 | 1 |
+| 8 | 1000 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 9 | 1001 | 0 | 0 | 0 | 0 | 1 | 0 | 0 |
+| A | 1010 | 0 | 0 | 0 | 1 | 0 | 0 | 0 |
+| b | 1011 | 1 | 1 | 0 | 0 | 0 | 0 | 0 |
+| C | 1100 | 0 | 1 | 1 | 0 | 0 | 0 | 1 |
+| d | 1101 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
+| E | 1110 | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
+| F | 1111 | 0 | 1 | 1 | 1 | 0 | 0 | 0 |
+```vhdl
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 03.03.2021 13:13:50
+-- Design Name: 
+-- Module Name: hex_7seg - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity hex_7seg is
+    Port ( 
+        hex_i : in STD_LOGIC_VECTOR (4 - 1 downto 0);
+        seg_o : out STD_LOGIC_VECTOR (7 - 1 downto 0)
+        );
+end hex_7seg;
+
+architecture Behavioral of hex_7seg is
+
+begin
+
+    --------------------------------------------------------------------
+    -- p_7seg_decoder:
+    -- A combinational process for 7-segment display decoder. 
+    -- Any time "hex_i" is changed, the process is "executed".
+    -- Output pin seg_o(6) corresponds to segment A, seg_o(5) to B, etc.
+    --------------------------------------------------------------------
+    
+    p_7seg_decoder : process(hex_i)
+    begin
+        case hex_i is
+            when "0000" =>
+                seg_o <= "0000001";     -- 0
+            when "0001" =>
+                seg_o <= "1001111";     -- 1
+             when "0010" =>
+                seg_o <= "0010010";     -- 2
+             when "0011" =>
+                seg_o <= "0000110";     -- 3
+             when "0100" =>
+                seg_o <= "1001100";     -- 4
+             when "0101" =>
+                seg_o <= "0100100";     -- 5
+             when "0110" =>
+                seg_o <= "0100000";     -- 6
+             when "0111" =>
+                seg_o <= "0001111";     -- 7  
+             when "1000" =>
+                seg_o <= "0000000";     -- 8
+             when "1001" =>
+                seg_o <= "0000100";     -- 9
+             when "1010" =>
+                seg_o <= "0001000";     -- A
+             when "1011" =>
+                seg_o <= "1100000";     -- b
+             when "1100" =>
+                seg_o <= "0110001";     -- C
+             when "1101" =>
+                seg_o <= "1000010";     -- d
+            when "1110" =>
+                seg_o <= "0110000";     -- E
+            when others =>
+                seg_o <= "0111000";     -- F
+        end case;
+    end process p_7seg_decoder;
+
+end Behavioral;
+
+```
+
+
+
+##### `clock_enable`
+
+```vhdl
+------------------------------------------------------------------------
+--
+-- Generates clock enable signal.
+-- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
+--
+-- Copyright (c) 2019-Present Tomas Fryza
+-- Dept. of Radio Electronics, Brno University of Technology, Czechia
+-- This work is licensed under the terms of the MIT license.
+--
+------------------------------------------------------------------------
+
+library ieee;               -- Standard library
+use ieee.std_logic_1164.all;-- Package for data types and logic operations
+use ieee.numeric_std.all;   -- Package for arithmetic operations
+
+------------------------------------------------------------------------
+-- Entity declaration for clock enable
+------------------------------------------------------------------------
+entity clock_enable is
+    generic(
+        g_MAX : natural := 30       -- Number of clk pulses to generate
+                                    -- one enable signal period
+    );  -- Note that there IS a semicolon between generic and port
+        -- sections
+    port(
+        clk   : in  std_logic;      -- Main clock
+        reset : in  std_logic;      -- Synchronous reset
+        ce_o  : out std_logic       -- Clock enable pulse signal
+    );
+end entity clock_enable;
+
+------------------------------------------------------------------------
+-- Architecture body for clock enable
+------------------------------------------------------------------------
+architecture Behavioral of clock_enable is
+
+    -- Local counter
+    signal s_cnt_local : natural;
+
+begin
+    --------------------------------------------------------------------
+    -- p_clk_ena:
+    -- Generate clock enable signal. By default, enable signal is low 
+    -- and generated pulse is always one clock long.
+    --------------------------------------------------------------------
+    p_clk_ena : process(clk)
+    begin
+        if rising_edge(clk) then        -- Synchronous process
+
+            if (reset = '1') then       -- High active reset
+                s_cnt_local <= 0;       -- Clear local counter
+                ce_o        <= '0';     -- Set output to low
+
+            -- Test number of clock periods
+            elsif (s_cnt_local >= (g_MAX - 1)) then
+                s_cnt_local <= 0;       -- Clear local counter
+                ce_o        <= '1';     -- Generate clock enable pulse
+
+            else
+                s_cnt_local <= s_cnt_local + 1;
+                ce_o        <= '0';
+            end if;
+        end if;
+    end process p_clk_ena;
+
+end architecture Behavioral;
+```
+
+##### `cnt_up_down`
+
+```vhdl
+------------------------------------------------------------------------
+--
+-- N-bit Up/Down binary counter.
+-- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
+--
+-- Copyright (c) 2019-Present Tomas Fryza
+-- Dept. of Radio Electronics, Brno University of Technology, Czechia
+-- This work is licensed under the terms of the MIT license.
+--
+------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+------------------------------------------------------------------------
+-- Entity declaration for n-bit counter
+------------------------------------------------------------------------
+entity cnt_up_down is
+    generic(
+        g_CNT_WIDTH : natural := 4      -- Number of bits for counter
+    );
+    port(
+        clk      : in  std_logic;       -- Main clock
+        reset    : in  std_logic;       -- Synchronous reset
+        en_i     : in  std_logic;       -- Enable input
+        cnt_up_i : in  std_logic;       -- Direction of the counter
+        cnt_o    : out std_logic_vector(g_CNT_WIDTH - 1 downto 0)
+    );
+end entity cnt_up_down;
+
+------------------------------------------------------------------------
+-- Architecture body for n-bit counter
+------------------------------------------------------------------------
+architecture behavioral of cnt_up_down is
+
+    -- Local counter
+    signal s_cnt_local : unsigned(g_CNT_WIDTH - 1 downto 0);
+
+begin
+    --------------------------------------------------------------------
+    -- p_cnt_up_down:
+    -- Clocked process with synchronous reset which implements n-bit 
+    -- up/down counter.
+    --------------------------------------------------------------------
+    p_cnt_up_down : process(clk)
+    begin
+        if rising_edge(clk) then
+        
+            if (reset = '1') then               -- Synchronous reset
+                s_cnt_local <= (others => '0'); -- Clear all bits
+
+            elsif (en_i = '1') then       -- Test if counter is enabled
+
+                -- TEST COUNTER DIRECTION HERE
+                if(cnt_up_i = '1') then
+                     s_cnt_local <= s_cnt_local + 1;
+                else
+                     s_cnt_local <= s_cnt_local -1;
+                end if;
+            end if;
+        end if;
+    end process p_cnt_up_down;
+
+    -- Output must be retyped from "unsigned" to "std_logic_vector"
+    cnt_o <= std_logic_vector(s_cnt_local);
+
+end architecture behavioral;
+
+```
+
+
+
+## References
+
+
+(https://www.fpga4student.com/2017/09/seven-segment-led-display-controller-basys3-fpga.html)
+(https://www.fpga4student.com/2017/09/vhdl-code-for-seven-segment-display.html)
+(https://simple-circuit.com/pic18f46k22-7-segment-display-example/)
+(https://github.com/shahjui2000/Push-Button-Door-VHDL-)
+(https://www.kth.se/social/files/5458faeef276544021bdf437/codelockVHDL_eng.pdf)
+(https://github.com/fm4dd/pmod-7seg4)
+
+
+
+
