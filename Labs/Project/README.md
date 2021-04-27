@@ -6,18 +6,28 @@
 * Barbora Šimková
 * Filip Šišolák
 
-* Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs
+Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs
 
 ### Project objectives
 ??
 
 ## Hardware description
+??
 
 ## VHDL modules description and simulations
+* 4x3 KeyPad control module
+* Relay control module
+* 7seg display control module
+* Lock logic module
 
 ### KeyPad controll module
+Module "keypad_to_num" for controlling 4x3 keypad contains from 3 input ports -> clk (needed to control state machine), reset (which is not needed in this case, but we are using template from previous labs), row_i (where comes the inforamtion which key was pressed). There are also 2 output ports -> col_o (sending sequention of 0 and 1 to the keypad columns) and finally the num_o (which send hex signal when key is pressed on keypad).
+Keypad_to_num works on basis of state machine where each state change to another after defined time.
+Each key represent hex signal - same as the label of the button on keypad for example 7 means x"0111". All other combinations are in table.
 
-este dopisat nejake info k modulu
+
+
+
 
 ##### VHDL code of KeyPad controll - keypad_to_num.vhdl
 
