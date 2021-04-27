@@ -21,25 +21,29 @@ Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/
 * Lock logic module
 
 ### KeyPad controll module
-Module "keypad_to_num" for controlling 4x3 keypad contains from 3 input ports -> clk (needed to control state machine), reset (which is not needed in this case, but we are using template from previous labs), row_i (where comes the inforamtion which key was pressed). There are also 2 output ports -> col_o (sending sequention of 0 and 1 to the keypad columns) and finally the num_o (which send hex signal when key is pressed on keypad).
+Module "keypad_to_num" for controlling 4x3 keypad contains from 3 input ports -> clk (needed to control state machine), reset (which is not needed in this case, but we are using template from previous labs), row_i (where comes the inforamtion which key was pressed). There are also 2 output ports -> col_o (sending sequention of 0 and 1 to the keypad columns) and finally the num_o (which send bin signal representing pressed key on keypad).
 Keypad_to_num works on basis of state machine where each state change to another after defined time.
-Each key represent hex signal - same as the label of the button on keypad for example 7 means x"0111". All other combinations are in table.
+Each key represent bin signal - same as the label of the button on keypad for example 7 means b"0111". All other combinations are in table.
+
+##### Functionality 
+![Keypad simulation waveforms](Images/keypad_func.PNG)
 
 ##### Table - Key pressed on keypad => num_o
 | Key | num_o | Value |
 | :-: | :-: | :-: | 
-| 0 | P17 | 0 | 
-| 1 | M17 | 1 | 
-| 2 | M18 | 2 | 
-| 3 | P18 | 3 | 
-| 4 | N17 | 4 | 
-| 5 | P17 | 5 | 
-| 6 | M17 | 6 | 
-| 7 | M18 | 7 | 
-| 8 | P18 | 8 |  
-| 9 | N17 | 9 | 
-| * | P17 | DELETE | 
-| # | M17 | ENTER | 
+| 0 | b"0000" | 0 | 
+| 1 | b"0001" | 1 | 
+| 2 | b"0010" | 2 | 
+| 3 | b"0011" | 3 | 
+| 4 | b"0100" | 4 | 
+| 5 | b"0101" | 5 | 
+| 6 | b"0110" | 6 | 
+| 7 | b"0111" | 7 | 
+| 8 | b"1000" | 8 |  
+| 9 | b"1001" | 9 | 
+| * | b"1110" | DELETE | 
+| # | b"1111" | ENTER |
+| N/A | b"1101" | DEFAULT | 
 
 
 
