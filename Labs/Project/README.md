@@ -507,7 +507,7 @@ end architecture testbench;
 
 (překreslím)
 
-![schematic](Images/schema.png)
+![schematic](Images/schematic.png)
 
 ### Table with connection of four 7 segment displays to Arty-A7-100T
 
