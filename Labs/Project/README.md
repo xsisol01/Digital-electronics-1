@@ -1,18 +1,25 @@
-# Project
-## Info
-* Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs
-* Topic n.2 - Door lock system with PIN (4-digit) terminal, 4x3 push buttons, 4-digit 7-segment display, relay for door lock control.
-* Collaborators:
-  1. Filip Šišolák
-  2. Barbora Šimková
-  3. Bohuslav Šotola
-  4. Tomáš Škurla
+# Door lock system with PIN (4-digit) terminal, 4x3 push buttons, 4-digit 7-segment display, relay for door lock control.
 
-## KeyPad controll module
+### Team members
+* Bohuslav Šotola
+* Tomáš Škurla
+* Barbora Šimková
+* Filip Šišolák
+
+* Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs
+
+### Project objectives
+??
+
+## Hardware description
+
+## VHDL modules description and simulations
+
+### KeyPad controll module
 
 este dopisat nejake info k modulu
 
-* VHDL code of KeyPad controll - keypad_to_num.vhdl
+##### VHDL code of KeyPad controll - keypad_to_num.vhdl
 
 ```vhdl
 library ieee;
@@ -405,7 +412,7 @@ p_smart_traffic_fsm : process(clk)
 ```
 
 
-### RELÉ - SIMULACE
+#### RELÉ - SIMULACE
 
 ```vhdl
 library ieee;
@@ -497,17 +504,17 @@ end architecture testbench;
 
 
 
-# Driver for multiple seven-segment displays
+### Driver for multiple seven-segment displays
 
-### Schematic of `driver_7seg_4digits` with connection to four 7 segment displays
+#### Schematic of `driver_7seg_4digits` with connection to four 7 segment displays
 
 ![driver](Images/driver.png)
 
-### Schematic of four 7 segment displays with connection to Arty-A7-100T
+#### Schematic of four 7 segment displays with connection to Arty-A7-100T
 
 ![schematic](Images/schematic1.png)
 
-### Table with connection of four 7 segment displays to Arty-A7-100T
+#### Table with connection of four 7 segment displays to Arty-A7-100T
 
 **Pmod JB**
 
@@ -916,7 +923,9 @@ begin
 end architecture behavioral;
 
 ```
+## TOP module description and simulations
 
+## Video
 
 
 ## References
