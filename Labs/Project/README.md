@@ -9,8 +9,7 @@
 Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs
 
 ### Project objectives
-??
-
+The scope of this project was to create the lock system utilizing an Arty A7-100T board. The project, as per the initial assignment, consists of a 4x3 keypad, a 4-digit 7segment display, and a relay to control the door lock. We also implemented a Three-color-LED whose colors represent each state of the door ( Green for Opened, Yellow for Closing, Red for Closed). The 4-digit 7 segment display is located on a breadboard connected to the board via Pmod connectors. (V prípade že sa toto nepáči zmeniť)
 ## Hardware description
 ??
 
