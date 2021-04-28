@@ -26,7 +26,7 @@ Keypad_to_num works on basis of state machine where each state change to another
 Each key represent bin signal - same as the label of the button on keypad for example 7 means b"0111". All other combinations are in table.
 
 ##### Functionality 
-![Keypad simulation waveforms](Images/keypad_func.PNG)
+![Keypad functionality](Images/keypad_func.PNG)
 
 ##### Table - Key pressed on keypad => num_o
 | Key | num_o | Value |
@@ -45,7 +45,8 @@ Each key represent bin signal - same as the label of the button on keypad for ex
 | # | b"1111" | ENTER |
 | N/A | b"1101" | DEFAULT | 
 
-
+##### State diagram 
+![State diagram](Images/keypad_sd.PNG)
 
 
 
