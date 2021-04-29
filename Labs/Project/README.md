@@ -1109,7 +1109,7 @@ end architecture behavioral;
 
 ```
 ### Simulation
-![simulace](Images/simulace_7seg_4digits.png)
+![simulace](Images/simulace_7seg_4digits_v2.png)
 ## TOP module description and simulations
 
 ## Video
