@@ -318,9 +318,28 @@ end architecture testbench;
 ![Keypad simulation waveforms](Images/TB_keypad.PNG)
 
 
-### RELÉ - VHDL
+### RELAY - VHDL
 
 ```vhdl
+------------------------------------------------------------------------
+--
+-- Traffic light controller using FSM.
+-- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
+--
+-- Copyright (c) 2020-Present Tomas Fryza
+-- Dept. of Radio Electronics, Brno University of Technology, Czechia
+-- This work is licensed under the terms of the MIT license.
+--
+-- This code is inspired by:
+-- [1] LBEbooks, Lesson 92 - Example 62: Traffic Light Controller
+--     https://www.youtube.com/watch?v=6_Rotnw1hFM
+-- [2] David Williams, Implementing a Finite State Machine in VHDL
+--     https://www.allaboutcircuits.com/technical-articles/implementing-a-finite-state-machine-in-vhdl/
+-- [3] VHDLwhiz, One-process vs two-process vs three-process state machine
+--     https://vhdlwhiz.com/n-process-state-machine/
+--
+------------------------------------------------------------------------
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -334,7 +353,7 @@ entity tlc is
         reset        : in  std_logic;
         
         door_o      : out  std_logic; 
-        kontrolka_o : out std_logic_vector(3 - 1 downto 0)
+        LED_o : out std_logic_vector(3 - 1 downto 0)
 
     );
 end entity tlc;
@@ -345,13 +364,13 @@ end entity tlc;
 architecture Behavioral of tlc is
 
                 
-    type   t_state2 is (zavrene_dvere, otevrene_dvere,zavirani_dveri);                   
+    type   t_state2 is (close_door, open_door,closing_door);                   
 
     signal s_state2  : t_state2;
 
    
     signal s_en             : std_logic;
-    signal s_klavesnice     : std_logic;
+    signal s_keypad         : std_logic;
     
     
     signal   s_cnt  : unsigned(5 - 1 downto 0);
@@ -364,7 +383,7 @@ architecture Behavioral of tlc is
     
     
     
-    constant c_heslo : std_logic:= '1';
+    constant c_password : std_logic:= '1';
 
 begin
 
@@ -374,7 +393,7 @@ begin
     -- signal is 100 MHz.
     
     s_en <= '1';
-    s_klavesnice <= '1';--Vstup z klávesnice. Nyní je zde hodnota 1 pro účely simulace
+    s_keypad <= '1';--Vstup z klávesnice. Nyní je zde hodnota 1 pro účely simulace
 
 
       --------------------------------------------------------------------
@@ -387,39 +406,39 @@ begin
    
    if rising_edge(clk) then
             if (reset = '1') then       -- Synchronous reset
-                s_state2 <= zavrene_dvere ;      -- Set initial state
+                s_state2 <= close_door ;      -- Set initial state
                 s_cnt   <= c_ZERO;      -- Clear all bits
 
 
             elsif (s_en = '1') then
                  
                  
-                  if (s_klavesnice = c_heslo) then
+                  if (s_keypad = c_password) then
                   s_cnt   <= c_ZERO; 
 
   
                 case s_state2 is
                 
                 
-                when otevrene_dvere =>
+                when open_door =>
                      
                         if (s_cnt < c_DELAY_7SEC) then
                             s_cnt <= s_cnt + 1;
                         else
                             -- Move to the next state
-                            s_state2 <= zavirani_dveri;
+                            s_state2 <= closing_door;
                           
                             s_cnt   <= c_ZERO; --nulování zpoždění
                         end if;
                         
                         
 
-                        when zavirani_dveri =>
+                        when closing_door =>
                         if (s_cnt < c_DELAY_3SEC) then
                             s_cnt <= s_cnt + 1;
                         else
                             -- Move to the next state
-                            s_state2 <= zavrene_dvere;
+                            s_state2 <= close_door;
                           
                             s_cnt   <= c_ZERO; --nulování zpoždění
                         end if;
@@ -428,12 +447,12 @@ begin
                        --end case; 
 
                      --case s_state2 is
-                         when zavrene_dvere =>
+                         when close_door =>
                         if (s_cnt < c_DELAY_7SEC) then
                             
                         else
                             -- Move to the next state
-                            s_state2 <= otevrene_dvere;
+                            s_state2 <= open_door;
                             -- Reset local counter value
                            
                         end if;
@@ -459,16 +478,16 @@ begin
         case s_state2 is
         
  
-            when zavrene_dvere =>
-                kontrolka_o <= "100";
+            when close_door =>
+                LED_o <= "100";
                 door_o <='0'; --dveře jsou zavřené
                 
-            when otevrene_dvere =>
-                kontrolka_o <= "010";   
+            when open_door =>
+                LED_o <= "010";   
                  door_o <='1'; --dveře jsou otevřené
 
-            when zavirani_dveri =>
-                 kontrolka_o <= "110";   
+            when closing_door =>
+                 LED_o <= "110";   
 
 
         end case;
@@ -477,12 +496,24 @@ begin
     
  
 end architecture Behavioral;
+
 ```
 
 
-#### RELÉ - SIMULACE
+#### RELAY - SIMULATION
 
 ```vhdl
+------------------------------------------------------------------------
+--
+-- Traffic lights controller testbench.
+-- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
+--
+-- Copyright (c) 2020-Present Tomas Fryza
+-- Dept. of Radio Electronics, Brno University of Technology, Czechia
+-- This work is licensed under the terms of the MIT license.
+--
+------------------------------------------------------------------------
+
 library ieee;
 use ieee.std_logic_1164.all;
 
@@ -506,7 +537,7 @@ architecture testbench of tb_tlc is
     signal s_reset      : std_logic;
 
     
-    signal s_kontrolka      : std_logic_vector(3 - 1 downto 0);
+    signal s_LED      : std_logic_vector(3 - 1 downto 0);
 
 
 begin
@@ -516,7 +547,7 @@ begin
             clk     => s_clk_100MHz,
             reset   => s_reset,
 
-            kontrolka_o => s_kontrolka
+            LED_o => s_LED
 
         );
 
@@ -554,8 +585,9 @@ begin
     end process p_stimulus;
 
 end architecture testbench;
+
 ```
-![image](https://user-images.githubusercontent.com/78815984/116296191-34f1dc00-a79a-11eb-93df-6a59b669bd06.png)
+![image](https://user-images.githubusercontent.com/78815984/116602630-44089380-a92c-11eb-98ff-e9705859536c.png)
 
 
 ### STAVOVÝ DIAGRAM
