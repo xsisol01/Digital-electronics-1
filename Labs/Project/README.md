@@ -590,8 +590,8 @@ end architecture testbench;
 ![image](https://user-images.githubusercontent.com/78815984/116602630-44089380-a92c-11eb-98ff-e9705859536c.png)
 
 
-### STAVOVÝ DIAGRAM
-![image](https://user-images.githubusercontent.com/78815984/116296179-2f949180-a79a-11eb-9717-fded365089d7.png)
+### STATE DIAGRAM
+![image](https://user-images.githubusercontent.com/78815984/116603312-1839dd80-a92d-11eb-956a-19e987994234.png)
 
 
 
