@@ -593,6 +593,7 @@ end architecture testbench;
 ### STATE DIAGRAM
 ![image](https://user-images.githubusercontent.com/78815984/116603312-1839dd80-a92d-11eb-956a-19e987994234.png)
 
+![image](https://user-images.githubusercontent.com/78815984/116604534-8b901f00-a92e-11eb-946c-fcca76870b12.png)
 
 
 
