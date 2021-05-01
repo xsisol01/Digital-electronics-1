@@ -1512,6 +1512,9 @@ end architecture testbench;
 
 ## TOP module description and simulations
 
+### Schematic of top
+
+![top](Images/top.png)
 ## Video
 
 
