@@ -343,12 +343,13 @@ use ieee.numeric_std.all;
 
 entity relay_to_door is
     port(
-        keypad_i     : in  std_logic;
+       keypad_i     : in  std_logic;
         clk          : in  std_logic;
         reset        : in  std_logic;
         
         door_o      : out  std_logic; 
         LED_o : out std_logic_vector(3 - 1 downto 0)
+
 
     );
 end entity relay_to_door;
@@ -358,8 +359,8 @@ architecture Behavioral of relay_to_door is
 
                 
     type   t_state is (close_door, open_door);                   
-
     signal s_state  : t_state;
+
 
    
     signal s_en             : std_logic;
@@ -373,25 +374,19 @@ architecture Behavioral of relay_to_door is
     constant c_DELAY_3SEC : unsigned(5 - 1 downto 0) := b"0_1100";
     constant c_DELAY_1SEC : unsigned(5 - 1 downto 0) := b"0_0100";
     constant c_ZERO       : unsigned(5 - 1 downto 0) := b"0_0000";
-   
+    
+
 
 begin
-
-clk_en0 : entity work.clock_enable
-        generic map(
-            g_MAX => 1      -- g_MAX = 50 ms / (1/100 MHz) 
-        )
-        port map(
-            clk   => clk,
-            reset => reset,
-            ce_o  => s_en   
-        );
     
-    p_state_changer : process(clk,reset,keypad_i)
+    s_en <= '1';
+
+
+ p_state_changer : process(clk,reset,keypad_i)
     begin
         if rising_edge(clk) then
-            if (reset = '1') then          -- Synchronous reset
-                s_state <= close_door ;      -- Set initial state
+            if (reset = '1') then     
+                s_state <= close_door ;     
                 s_cnt <= c_ZERO;
 
             elsif (s_en = '1') then
@@ -417,8 +412,8 @@ clk_en0 : entity work.clock_enable
                     when others =>
                         s_state <= close_door;                   
                end case;            
-            end if; -- Synchronous reset
-        end if; -- Rising edge
+            end if;
+        end if; 
     end process p_state_changer;
 
 
@@ -429,16 +424,16 @@ clk_en0 : entity work.clock_enable
  
             when close_door =>
                 LED_o <= "100";
-                door_o <='0'; --dveře jsou zavřené
+                door_o <='0';
                 
             when open_door =>
                 LED_o <= "010";   
-                door_o <='1'; --dveře jsou otevřené
+                door_o <='1';
            
         end case;
     end process p_output_door;
     
-   
+    
  
 end architecture Behavioral;
 
@@ -448,7 +443,67 @@ end architecture Behavioral;
 #### Simulation of Relay control
 
 ```vhdl
-Bohus dopln novu simulaciu dik
+library ieee;
+use ieee.std_logic_1164.all;
+
+
+entity tb_relay_to_door is
+    -- Entity of testbench is always empty
+end entity tb_relay_to_door;
+
+
+architecture testbench of tb_relay_to_door is
+
+    constant c_CLK_100MHZ_PERIOD : time := 10 ns;
+
+    --Local signals
+    signal s_clk_100MHz : std_logic;
+    signal s_reset      : std_logic;
+    signal s_keypad         : std_logic;
+    
+    signal s_LED      : std_logic_vector(3 - 1 downto 0);
+
+
+begin
+    uut_relay_to_door : entity work.relay_to_door
+        port map(
+            clk     => s_clk_100MHz,
+            reset   => s_reset,
+            keypad_i =>s_keypad,
+            LED_o => s_LED
+
+        );
+
+
+    p_clk_gen : process
+    begin
+        while now < 10000 ns loop 
+            s_clk_100MHz <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk_100MHz <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;
+    end process p_clk_gen;
+
+
+    p_reset_gen : process
+    begin
+        s_reset <= '0';
+        s_keypad <= '1'; wait for 200ns;
+        s_keypad <= '0';wait for 100ns;
+        s_keypad <= '1';
+        wait;
+    end process p_reset_gen;
+
+
+    p_stimulus : process
+    begin
+        
+        wait;
+    end process p_stimulus;
+
+end architecture testbench;
 
 ```
 #### Image of simulation waveforms
