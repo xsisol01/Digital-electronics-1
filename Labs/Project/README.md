@@ -464,7 +464,7 @@ Bohus dopln novu simulaciu dik
 
 ### Schematic of four 7 segment displays with connection to Arty-A7-100T
 
-![schematic](Images/schematic1.png)
+![schematic](Images/4digits-scheme.png)
 
 ### Table with connection of four 7 segment displays to Arty-A7-100T
 
