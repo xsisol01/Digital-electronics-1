@@ -330,7 +330,8 @@ Add Text here
 ![image](https://user-images.githubusercontent.com/78815984/116604534-8b901f00-a92e-11eb-946c-fcca76870b12.png)
 
 ### State Diagram
-![image](https://user-images.githubusercontent.com/78815984/116603312-1839dd80-a92d-11eb-956a-19e987994234.png)
+![image](https://user-images.githubusercontent.com/78815984/116793199-9204cf00-aac5-11eb-95fb-38cfb611e0e1.png)
+
 
 ### VHDL code and simulation
 #### VHDL code for Relay control
