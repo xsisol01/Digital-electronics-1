@@ -470,6 +470,8 @@ Bohus dopln novu simulaciu dik
 
 ![board](Images/4digit-board.PNG)
 
+![board](Images/4digit-render-sidefront.PNG)
+
 ### Table with connection of four 7 segment displays to Arty-A7-100T
 
 **Pmod JB**
