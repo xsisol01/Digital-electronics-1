@@ -11,7 +11,7 @@ Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/
 ### Project objectives
 The scope of this project was to create the lock system utilizing an Arty A7-100T board. The project, as per the initial assignment, consists of a 4x3 keypad, a 4-digit 7segment display, and a relay to control the door lock. We also implemented a Three-color-LED whose colors represent each state of the door ( Green for Opened, Yellow for Closing, Red for Closed). The 4-digit 7 segment display is located on a breadboard connected to the board via Pmod connectors.
 
-## Hardware description
+### Hardware description
 ??
 
 ### VHDL modules description and simulations
@@ -52,6 +52,7 @@ Each key represent bin signal - same as the label of the button on keypad for ex
 
 
 ### VHDL code and simulation
+
 #### VHDL code of KeyPad control - keypad_to_num.vhdl
 
 ```vhdl
@@ -241,7 +242,7 @@ begin
 end architecture Behavioral;
 ```
 
-#### Simulation of keypad control - tb_keypad_to_num.vhdl
+#### Simulation of KeyPad control - tb_keypad_to_num.vhdl
 
 ```vhdl
 library ieee;
@@ -316,12 +317,21 @@ begin
 end architecture testbench;  
 ```
 
-* Image of simulation waveforms - simulating KeyPad controller module
+#### Image of simulation waveforms - simulating KeyPad control module
 
 ![Keypad simulation waveforms](Images/TB_keypad.PNG)
 
 
-### RELAY - VHDL
+## Relay control module
+
+### Functionality 
+![image](https://user-images.githubusercontent.com/78815984/116604534-8b901f00-a92e-11eb-946c-fcca76870b12.png)
+
+### State Diagram
+![image](https://user-images.githubusercontent.com/78815984/116603312-1839dd80-a92d-11eb-956a-19e987994234.png)
+
+### VHDL code and simulation
+#### VHDL code for Relay control
 
 ```vhdl
 ------------------------------------------------------------------------
@@ -503,7 +513,7 @@ end architecture Behavioral;
 ```
 
 
-#### RELAY - SIMULATION
+#### Simulation of Relay control
 
 ```vhdl
 ------------------------------------------------------------------------
@@ -590,14 +600,8 @@ begin
 end architecture testbench;
 
 ```
+#### Image of simulation waveforms
 ![image](https://user-images.githubusercontent.com/78815984/116602630-44089380-a92c-11eb-98ff-e9705859536c.png)
-
-
-### STATE DIAGRAM
-![image](https://user-images.githubusercontent.com/78815984/116603312-1839dd80-a92d-11eb-956a-19e987994234.png)
-
-![image](https://user-images.githubusercontent.com/78815984/116604534-8b901f00-a92e-11eb-946c-fcca76870b12.png)
-
 
 
 
