@@ -507,7 +507,7 @@ end architecture testbench;
 
 ```
 #### Image of simulation waveforms
-![image](https://user-images.githubusercontent.com/78815984/116602630-44089380-a92c-11eb-98ff-e9705859536c.png)
+![image](https://user-images.githubusercontent.com/78815984/116787836-bbfac900-aaa6-11eb-8a42-3d914b064a4a.png)
 
 
 
