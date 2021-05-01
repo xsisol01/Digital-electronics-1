@@ -9,7 +9,8 @@
 Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs
 
 ### Project objectives
-The scope of this project was to create the lock system utilizing an Arty A7-100T board. The project, as per the initial assignment, consists of a 4x3 keypad, a 4-digit 7segment display, and a relay to control the door lock. We also implemented a Three-color-LED whose colors represent each state of the door ( Green for Opened, Yellow for Closing, Red for Closed). The 4-digit 7 segment display is located on a breadboard connected to the board via Pmod connectors. (V prípade že sa toto nepáči zmeniť)
+The scope of this project was to create the lock system utilizing an Arty A7-100T board. The project, as per the initial assignment, consists of a 4x3 keypad, a 4-digit 7segment display, and a relay to control the door lock. We also implemented a Three-color-LED whose colors represent each state of the door ( Green for Opened, Yellow for Closing, Red for Closed). The 4-digit 7 segment display is located on a breadboard connected to the board via Pmod connectors.
+
 ## Hardware description
 ??
 
@@ -20,16 +21,16 @@ The scope of this project was to create the lock system utilizing an Arty A7-100
 * [Lock logic module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#lock-logic-module)
 
 
-
-### KeyPad control module
+## KeyPad control module
+### Description
 Module "keypad_to_num" for controlling 4x3 keypad contains from 3 input ports -> clk (needed to control state machine), reset (which is not needed in this case, but we are using template from previous labs), row_i (where comes the inforamtion which key was pressed). There are also 2 output ports -> col_o (sending sequention of 0 and 1 to the keypad columns) and finally the num_o (which send bin signal representing pressed key on keypad).
 Keypad_to_num works on basis of state machine where each state change to another after defined time.
 Each key represent bin signal - same as the label of the button on keypad for example 7 means b"0111". All other combinations are in table.
 
-##### Functionality 
+### Functionality 
 ![Keypad functionality](Images/keypad_func.PNG)
 
-##### Table - Key pressed on keypad => num_o
+### Table - Key pressed on keypad => num_o
 | Key | num_o | Value |
 | :-: | :-: | :-: | 
 | 0 | b"0000" | 0 | 
@@ -46,12 +47,12 @@ Each key represent bin signal - same as the label of the button on keypad for ex
 | # | b"1111" | ENTER |
 | N/A | b"1101" | DEFAULT | 
 
-##### State diagram 
+### State diagram 
 ![State diagram](Images/keypad_sd.PNG)
 
 
-
-##### VHDL code of KeyPad controll - keypad_to_num.vhdl
+### VHDL code and simulation
+#### VHDL code of KeyPad control - keypad_to_num.vhdl
 
 ```vhdl
 library ieee;
@@ -240,7 +241,7 @@ begin
 end architecture Behavioral;
 ```
 
-* Simulation of keypad controller - tb_keypad_to_num.vhdl
+#### Simulation of keypad control - tb_keypad_to_num.vhdl
 
 ```vhdl
 library ieee;
