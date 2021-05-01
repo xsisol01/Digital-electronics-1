@@ -13,10 +13,10 @@ The scope of this project was to create the lock system utilizing an Arty A7-100
 
 ### Hardware description
 Hardware used in this project:
-*Arty A7-100T board (https://www.robotshop.com/eu/en/arty-a7-100t-artix-7-fpga-development-board.html)
-*Pmod SSR: Solid State Relay Electronic Switch (https://store.digilentinc.com/pmod-ssr-solid-state-relay-electronic-switch/)
-*Membrane 3x4 Matrix Keypad (https://www.adafruit.com/product/419)
-*Custom 4 Digit 7 segment module 
+* Arty A7-100T board (https://www.robotshop.com/eu/en/arty-a7-100t-artix-7-fpga-development-board.html)
+* Pmod SSR: Solid State Relay Electronic Switch (https://store.digilentinc.com/pmod-ssr-solid-state-relay-electronic-switch/)
+* Membrane 3x4 Matrix Keypad (https://www.adafruit.com/product/419)
+* Custom 4 Digit 7 segment module 
 
 ### VHDL modules description and simulations
 * [4x3 KeyPad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-control-module) 
