@@ -336,34 +336,14 @@ Add Text here
 #### VHDL code for Relay control
 
 ```vhdl
-------------------------------------------------------------------------
---
--- Traffic light controller using FSM.
--- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
---
--- Copyright (c) 2020-Present Tomas Fryza
--- Dept. of Radio Electronics, Brno University of Technology, Czechia
--- This work is licensed under the terms of the MIT license.
---
--- This code is inspired by:
--- [1] LBEbooks, Lesson 92 - Example 62: Traffic Light Controller
---     https://www.youtube.com/watch?v=6_Rotnw1hFM
--- [2] David Williams, Implementing a Finite State Machine in VHDL
---     https://www.allaboutcircuits.com/technical-articles/implementing-a-finite-state-machine-in-vhdl/
--- [3] VHDLwhiz, One-process vs two-process vs three-process state machine
---     https://vhdlwhiz.com/n-process-state-machine/
---
-------------------------------------------------------------------------
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-------------------------------------------------------------------------
--- Entity declaration for traffic light controller
-------------------------------------------------------------------------
-entity tlc is
+
+entity relay_to_door is
     port(
+        keypad_i     : in  std_logic;
         clk          : in  std_logic;
         reset        : in  std_logic;
         
@@ -371,17 +351,15 @@ entity tlc is
         LED_o : out std_logic_vector(3 - 1 downto 0)
 
     );
-end entity tlc;
+end entity relay_to_door;
 
-------------------------------------------------------------------------
--- Architecture declaration for traffic light controller
-------------------------------------------------------------------------
-architecture Behavioral of tlc is
+
+architecture Behavioral of relay_to_door is
 
                 
-    type   t_state2 is (close_door, open_door,closing_door);                   
+    type   t_state is (close_door, open_door);                   
 
-    signal s_state2  : t_state2;
+    signal s_state  : t_state;
 
    
     signal s_en             : std_logic;
@@ -395,102 +373,58 @@ architecture Behavioral of tlc is
     constant c_DELAY_3SEC : unsigned(5 - 1 downto 0) := b"0_1100";
     constant c_DELAY_1SEC : unsigned(5 - 1 downto 0) := b"0_0100";
     constant c_ZERO       : unsigned(5 - 1 downto 0) := b"0_0000";
-    
-    
-    
-    constant c_password : std_logic:= '1';
+   
 
 begin
 
-    --------------------------------------------------------------------
-    -- Instance (copy) of clock_enable entity generates an enable pulse
-    -- every 250 ms (4 Hz). Remember that the frequency of the clock 
-    -- signal is 100 MHz.
+clk_en0 : entity work.clock_enable
+        generic map(
+            g_MAX => 1      -- g_MAX = 50 ms / (1/100 MHz) 
+        )
+        port map(
+            clk   => clk,
+            reset => reset,
+            ce_o  => s_en   
+        );
     
-    s_en <= '1';
-    s_keypad <= '1';--Vstup z klávesnice. Nyní je zde hodnota 1 pro účely simulace
-
-
-      --------------------------------------------------------------------
-    -- p_smart_traffic_fsm:
-    -- The sequential process with synchronous reset and clock_enable 
-    -- entirely controls the s_state signal by CASE statement.
-    --------------------------------------------------------------------
- p_smart_traffic_fsm : process(clk)
+    p_state_changer : process(clk,reset,keypad_i)
     begin
-   
-   if rising_edge(clk) then
-            if (reset = '1') then       -- Synchronous reset
-                s_state2 <= close_door ;      -- Set initial state
-                s_cnt   <= c_ZERO;      -- Clear all bits
-
+        if rising_edge(clk) then
+            if (reset = '1') then          -- Synchronous reset
+                s_state <= close_door ;      -- Set initial state
+                s_cnt <= c_ZERO;
 
             elsif (s_en = '1') then
-                 
-                 
-                  if (s_keypad = c_password) then
-                  s_cnt   <= c_ZERO; 
-
-  
-                case s_state2 is
-                
-                
-                when open_door =>
-                     
+            
+                case s_state is
+                    when close_door =>
+                        if (keypad_i = '1') then
+                            s_state <= open_door;
+                            s_cnt   <= c_ZERO;  
+                        else
+                            s_state <= close_door;
+                            s_cnt <= c_ZERO;
+                        end if;
+                        
+                    when open_door =>
                         if (s_cnt < c_DELAY_7SEC) then
                             s_cnt <= s_cnt + 1;
                         else
-                            -- Move to the next state
-                            s_state2 <= closing_door;
-                          
-                            s_cnt   <= c_ZERO; --nulování zpoždění
-                        end if;
-                        
-                        
-
-                        when closing_door =>
-                        if (s_cnt < c_DELAY_3SEC) then
-                            s_cnt <= s_cnt + 1;
-                        else
-                            -- Move to the next state
-                            s_state2 <= close_door;
-                          
-                            s_cnt   <= c_ZERO; --nulování zpoždění
-                        end if;
-                        
-                        
-                       --end case; 
-
-                     --case s_state2 is
-                         when close_door =>
-                        if (s_cnt < c_DELAY_7SEC) then
-                            
-                        else
-                            -- Move to the next state
-                            s_state2 <= open_door;
-                            -- Reset local counter value
-                           
-                        end if;
-
-                  end case;
-               
-                 end if; 
-         
-            end if;
-  end if;
+                            s_state <= close_door;
+                            s_cnt <= c_ZERO;
+                       end if;
+                                  
+                    when others =>
+                        s_state <= close_door;                   
+               end case;            
+            end if; -- Synchronous reset
+        end if; -- Rising edge
+    end process p_state_changer;
 
 
-    end process p_smart_traffic_fsm;
-
-    --------------------------------------------------------------------
-    -- p_output_fsm:
-    -- The combinatorial process is sensitive to state changes, and sets
-    -- the output signals accordingly. This is an example of a Moore 
-    -- state machine because the output is set based on the active state.
-    --------------------------------------------------------------------
-    p_output_fsm : process(s_state2)
+    p_output_door : process(s_state)
     begin
-        case s_state2 is
+        case s_state is
         
  
             when close_door =>
@@ -499,16 +433,12 @@ begin
                 
             when open_door =>
                 LED_o <= "010";   
-                 door_o <='1'; --dveře jsou otevřené
-
-            when closing_door =>
-                 LED_o <= "110";   
-
-
+                door_o <='1'; --dveře jsou otevřené
+           
         end case;
-    end process p_output_fsm;
+    end process p_output_door;
     
-    
+   
  
 end architecture Behavioral;
 
@@ -518,88 +448,7 @@ end architecture Behavioral;
 #### Simulation of Relay control
 
 ```vhdl
-------------------------------------------------------------------------
---
--- Traffic lights controller testbench.
--- Nexys A7-50T, Vivado v2020.1.1, EDA Playground
---
--- Copyright (c) 2020-Present Tomas Fryza
--- Dept. of Radio Electronics, Brno University of Technology, Czechia
--- This work is licensed under the terms of the MIT license.
---
-------------------------------------------------------------------------
-
-library ieee;
-use ieee.std_logic_1164.all;
-
-------------------------------------------------------------------------
--- Entity declaration for testbench
-------------------------------------------------------------------------
-entity tb_tlc is
-    -- Entity of testbench is always empty
-end entity tb_tlc;
-
-------------------------------------------------------------------------
--- Architecture body for testbench
-------------------------------------------------------------------------
-architecture testbench of tb_tlc is
-
-    -- Local constants
-    constant c_CLK_100MHZ_PERIOD : time := 10 ns;
-
-    --Local signals
-    signal s_clk_100MHz : std_logic;
-    signal s_reset      : std_logic;
-
-    
-    signal s_LED      : std_logic_vector(3 - 1 downto 0);
-
-
-begin
-    -- Connecting testbench signals with tlc entity (Unit Under Test)
-    uut_tlc : entity work.tlc
-        port map(
-            clk     => s_clk_100MHz,
-            reset   => s_reset,
-
-            LED_o => s_LED
-
-        );
-
-    --------------------------------------------------------------------
-    -- Clock generation process
-    --------------------------------------------------------------------
-    p_clk_gen : process
-    begin
-        while now < 10000 ns loop   -- 10 usec of simulation
-            s_clk_100MHz <= '0';
-            wait for c_CLK_100MHZ_PERIOD / 2;
-            s_clk_100MHz <= '1';
-            wait for c_CLK_100MHZ_PERIOD / 2;
-        end loop;
-        wait;
-    end process p_clk_gen;
-
-    --------------------------------------------------------------------
-    -- Reset generation process
-    --------------------------------------------------------------------
-    p_reset_gen : process
-    begin
-        s_reset <= '0';
-  
-        wait;
-    end process p_reset_gen;
-
-    --------------------------------------------------------------------
-    -- Data generation process
-    --------------------------------------------------------------------
-    p_stimulus : process
-    begin
-        
-        wait;
-    end process p_stimulus;
-
-end architecture testbench;
+Bohus dopln novu simulaciu dik
 
 ```
 #### Image of simulation waveforms
