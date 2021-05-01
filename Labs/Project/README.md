@@ -19,7 +19,17 @@ The scope of this project was to create the lock system utilizing an Arty A7-100
 * 7seg display control module
 * Lock logic module
 
-### KeyPad controll module
+## Table of Contents 
+* [Keypad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-controll-module)
+* [Relay] (https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay---vhdl)
+* [7 segment display] (https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#driver-for-multiple-seven-segment-displays)
+* [Lock logic module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#lock-logic-module)
+* [Top module] (https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#top-module-description-and-simulations)
+
+
+
+
+### KeyPad control module
 Module "keypad_to_num" for controlling 4x3 keypad contains from 3 input ports -> clk (needed to control state machine), reset (which is not needed in this case, but we are using template from previous labs), row_i (where comes the inforamtion which key was pressed). There are also 2 output ports -> col_o (sending sequention of 0 and 1 to the keypad columns) and finally the num_o (which send bin signal representing pressed key on keypad).
 Keypad_to_num works on basis of state machine where each state change to another after defined time.
 Each key represent bin signal - same as the label of the button on keypad for example 7 means b"0111". All other combinations are in table.
