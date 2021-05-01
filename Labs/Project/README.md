@@ -323,6 +323,8 @@ end architecture testbench;
 
 
 ## Relay control module
+### Description
+Add Text here
 
 ### Functionality 
 ![image](https://user-images.githubusercontent.com/78815984/116604534-8b901f00-a92e-11eb-946c-fcca76870b12.png)
@@ -605,17 +607,17 @@ end architecture testbench;
 
 
 
-### Driver for multiple seven-segment displays
+## Driver for multiple seven-segment displays
 
-#### Schematic of `driver_7seg_4digits` with connection to four 7 segment displays
+### Schematic of `driver_7seg_4digits` with connection to four 7 segment displays
 
 ![driver](Images/driver.png)
 
-#### Schematic of four 7 segment displays with connection to Arty-A7-100T
+### Schematic of four 7 segment displays with connection to Arty-A7-100T
 
 ![schematic](Images/schematic1.png)
 
-#### Table with connection of four 7 segment displays to Arty-A7-100T
+### Table with connection of four 7 segment displays to Arty-A7-100T
 
 **Pmod JB**
 
