@@ -20,11 +20,11 @@ The scope of this project was to create the lock system utilizing an Arty A7-100
 * Lock logic module
 
 ## Table of Contents 
-* [Keypad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-controll-module)
-* [Relay] (https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay---vhdl)
-* [7 segment display] (https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#driver-for-multiple-seven-segment-displays)
+* [Keypad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-control-module)
+* [Relay](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay---vhdl)
+* [7 segment display](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#driver-for-multiple-seven-segment-displays)
 * [Lock logic module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#lock-logic-module)
-* [Top module] (https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#top-module-description-and-simulations)
+* [Top module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#top-module-description-and-simulations)
 
 
 
