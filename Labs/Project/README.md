@@ -466,6 +466,10 @@ Bohus dopln novu simulaciu dik
 
 ![schematic](Images/4digit-scheme.PNG)
 
+### Board for four 7 segment displays
+
+![board](Images/4digit-board.PNG)
+
 ### Table with connection of four 7 segment displays to Arty-A7-100T
 
 **Pmod JB**
