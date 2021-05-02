@@ -63,6 +63,7 @@ Each key represent bin signal - same as the label of the button on keypad for ex
 
 ### VHDL code and simulation
 ##### VHDL code of KeyPad controller - `keypad_to_num.vhdl`
+[link to keypad design](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/imports/Project/Project_lock/Project_lock.srcs/sources_1/new/keypad_to_num.vhd)
 
 ```vhdl
 library ieee;
