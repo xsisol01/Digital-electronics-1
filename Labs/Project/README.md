@@ -812,8 +812,8 @@ begin
 
 end architecture testbench;
 ```
-##### VHDL code of  - `hex_7seg`
-**Decoder truth table for common anode 7-segment display:**
+
+##### Decoder truth table for common anode 7-segment display:
 
 | **Hex** | **Inputs** | **A** | **B** | **C** | **D** | **E** | **F** | **G** |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -833,6 +833,9 @@ end architecture testbench;
 | d | 1101 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
 | E | 1110 | 0 | 1 | 1 | 0 | 0 | 0 | 0 |
 | F | 1111 | 0 | 1 | 1 | 1 | 0 | 0 | 0 |
+
+
+##### VHDL code of decoder to 7 segment display  - `hex_7seg`
 ```vhdl
 ----------------------------------------------------------------------------------
 -- Company: 
@@ -926,7 +929,8 @@ begin
 end Behavioral;
 
 ```
-##### `clock_enable`
+
+##### VHDL code of `clock_enable`
 
 ```vhdl
 ------------------------------------------------------------------------
@@ -997,7 +1001,7 @@ begin
 end architecture Behavioral;
 ```
 
-##### `cnt_up_down`
+##### VHDL code of `cnt_up_down`
 
 ```vhdl
 ------------------------------------------------------------------------
