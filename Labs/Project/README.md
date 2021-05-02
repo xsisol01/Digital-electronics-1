@@ -543,7 +543,7 @@ end architecture testbench;
 ## Driver for multiple seven-segment displays
 
 ### Description
-
+This module is used to display the numbers (PIN code) which are entered into a keypad. Module contains inputs signal such as reset, clk a four 4-bit signals data0_i, data1_i, data2_i, data3_i. Output signals are 7-bit signal seg_o and 4-bit signal dig_o. The signal seg_o determines which segment is going to light and the signal dig_o determines on which digit. The design source `clock_enable` is used to generate the clock enable signal. The design source `cnt_up_down` is binary n-bit counter and is used to counting in either direction. The design source `hex_7seg` is decoder for common anode 7-segment display
 ##### Schematic of `driver_7seg_4digits` with connection to 7 segment displays
 
 ![driver](Images/driver_7seg.png)
