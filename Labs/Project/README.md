@@ -1074,7 +1074,7 @@ begin
 end architecture behavioral;
 
 ```
-##### Simulation
+##### Simulation of `driver_7seg_4digits`
 ![simulace](Images/simulace_7seg_4digits_v2.png)
 
 
