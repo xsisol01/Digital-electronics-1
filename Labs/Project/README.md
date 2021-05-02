@@ -1099,7 +1099,11 @@ end architecture behavioral;
 
 
 ### Lock logic module
-some information
+##### Description
+Module "locker_logic" is the main part of the lock. Module contains from 3 input ports -> clk (needed to control state machine), reset and num_i ( where comes signal with information which button was pressed on keypad). It also contain 5 ouput ports where 4 of them are data0_o-data3_0 (those ports sends signals what to show on displays to driver 7seg) and the last output port is relay_o ( which send '1' to relay module if Password is selected correctly).
+Password is set to 1234 as we can see in code constants NUM(1-4)_PW. Lock logic works on principle of state machine, where next state comes after pushing another button on keypad.
+Checking if the numbers were selected correctly, we are working with defined signals signal "s_num(1-4)_corr". These signals are setted to '1' when the pressed button was same as constant NUMx_PW.
+
 
 ##### Block scheme
 ![Block Scheme of lock module](Images/BS_lock.PNG)
