@@ -525,7 +525,7 @@ end architecture testbench;
 
 ### Schematic of `driver_7seg_4digits` with connection to four 7 segment displays
 
-![driver](Images/driver.png)
+![driver](Images/driver_7seg.png)
 
 ### Schematic of four 7 segment displays with connection to Arty-A7-100T
 
