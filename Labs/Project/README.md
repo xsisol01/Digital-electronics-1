@@ -333,7 +333,28 @@ end architecture testbench;
 
 ## Relay control module
 ### Description
-Add Text here
+In this project there is also a solid state relay which is connected to the board via Pmod (JA) connectors. I use a two – state diagram: Close_door (default state) and Open_door.
+
+If keypad_i = ‘1’ the Close_door will be changed to state Open_door. Signal s_keypad is coming from module locker_logic.
+
+If keypad_i = ‘0’ the Close_door will be still closed.
+
+Solid state relay uses six pins, but only three are used, namely: Pin 1 (ON), Pin 5 (GND) and Pin 6 (VCC  3.3/5V).
+
+STATES:
+
+Open_door:
+
+door_o = ‘1’  //door is opened
+
+LED_o = “010” // LED color is green
+
+Close_door:
+
+door_o = ‘0’  //door is closed
+
+LED_o = “100”// LED color is red
+
 
 ### Functionality 
 ![image](https://user-images.githubusercontent.com/78815984/116604534-8b901f00-a92e-11eb-946c-fcca76870b12.png)
