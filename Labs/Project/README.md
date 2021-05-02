@@ -1437,7 +1437,7 @@ end architecture testbench;
 
 ### Schematic of top
 
-![top](Images/top.png)
+![top](Images/top1.png)
 
 ##### VHDL code of Top modul - `top.vhdl`
 ```vhdl
