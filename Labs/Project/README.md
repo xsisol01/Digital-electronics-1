@@ -1725,6 +1725,9 @@ end Behavioral;
 ##### Simulation waveform of top module
 ![tb_top](Images/TB_top.PNG)
 
+### Discussion of results
+Our main goal was to fulfill the task, which we can say that we succeeded. In addition to entering, we wanted to implement delete and enter on the keyboard, which failed. On the other hand, we succeeded in implementing an LED indicator (red when close, green when open) and automatic locking of the lock after a certain time.
+
 ## Video
 
 
