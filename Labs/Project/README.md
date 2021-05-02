@@ -450,7 +450,7 @@ end architecture Behavioral;
 ```
 
 
-#### Simulation of Relay control
+#### Simulation of Relay control - `tb_relay_to_door.vhdl`
 
 ```vhdl
 library ieee;
