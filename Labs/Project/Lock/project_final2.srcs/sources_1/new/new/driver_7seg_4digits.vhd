@@ -57,7 +57,6 @@ begin
          clk    => clk, 
          reset  => reset,
          ce_o   => s_en 
-            --- WRITE YOUR CODE HERE
         );
 
     --------------------------------------------------------------------
@@ -66,7 +65,6 @@ begin
     bin_cnt0 : entity work.cnt_up_down
         generic map(
         g_CNT_WIDTH => 2
-            --- WRITE YOUR CODE HERE
         )
         port map(
         clk         => clk,   
@@ -74,7 +72,6 @@ begin
         en_i        => s_en,  
         cnt_up_i    => '0',
         cnt_o       => s_cnt
-            --- WRITE YOUR CODE HERE
         );
 
     --------------------------------------------------------------------
