@@ -404,6 +404,8 @@ LED_o = “100”// LED color is red
 ### VHDL code and simulation
 #### VHDL code of Relay controller - `relay_to_door.vhdl`
 
+[Link to `relay_to_door.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/new/relay_to_door.vhd)
+
 ```vhdl
 library ieee;
 use ieee.std_logic_1164.all;
@@ -510,6 +512,8 @@ end architecture Behavioral;
 
 
 #### Simulation of Relay control - `tb_relay_to_door.vhdl`
+
+[Link to `tb_relay_to_door.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sim_1/new/tb_relay_to_door.vhd)
 
 ```vhdl
 library ieee;
