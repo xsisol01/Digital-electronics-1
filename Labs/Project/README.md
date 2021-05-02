@@ -519,26 +519,25 @@ end architecture testbench;
 #### Image of simulation waveforms
 ![image](https://user-images.githubusercontent.com/78815984/116787836-bbfac900-aaa6-11eb-8a42-3d914b064a4a.png)
 
-
-
 ## Driver for multiple seven-segment displays
 
-### Schematic of `driver_7seg_4digits` with connection to 7 segment displays
+### Description
 
+##### Schematic of `driver_7seg_4digits` with connection to 7 segment displays
 
 ![driver](Images/driver_7seg.png)
 
-### Schematic of 7 segment displays with connection to Arty-A7-100T
+##### Schematic of 7 segment displays with connection to Arty-A7-100T
 
 ![schematic](Images/4digit-scheme.PNG)
 
-### Board for 7 segment displays
+##### Board for 7 segment displays
 
 ![board](Images/4digit-board.PNG)
 
 ![board](Images/4digit-render-sidefront.PNG)
 
-### Table with connection of four 7 segment displays to Arty-A7-100T
+##### Table with connection of four 7 segment displays to Arty-A7-100T
 
 **Pmod JB**
 
