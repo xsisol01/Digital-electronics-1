@@ -18,6 +18,8 @@ Hardware used in this project:
 * Membrane 3x4 Matrix Keypad (https://www.adafruit.com/product/419)
 * Custom 4 Digit 7 segment module 
 
+![Hardware Description Board](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Hardware%20description%20Board.png)
+
 ### VHDL modules description and simulations
 * [4x3 KeyPad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-control-module) 
 * [Relay control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay---vhdl)
