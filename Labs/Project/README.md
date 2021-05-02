@@ -20,6 +20,10 @@ Hardware used in this project:
 
 ![Hardware Description Board](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Hardware%20description%20Board.png)
 
+#### Theoretical imagine of all of modules connected together 
+![Hardware Description Board](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Connection_without_pins.png)
+
+
 ### VHDL modules description and simulations
 * [4x3 KeyPad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-control-module) 
 * [Relay control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay---vhdl)
