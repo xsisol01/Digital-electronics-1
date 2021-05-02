@@ -18,7 +18,7 @@ Hardware used in this project:
 * Membrane 3x4 Matrix Keypad (https://www.adafruit.com/product/419)
 * Custom 4 Digit 7 segment module 
 
-![Hardware Description Board](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Hardware%20description%20Board.png)
+![Hardware Connection Legend](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Board%20Legend.png)
 
 #### Theoretical imagine of all of modules connected together 
 ![Hardware Description Board](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Connection_without_pins.png)
