@@ -1736,17 +1736,17 @@ Our main goal was to fulfill the task, which we can say that we succeeded. In ad
 ## References
 
 
-    1. https://www.fpga4student.com/2017/09/seven-segment-led-display-controller-basys3-fpga.html
+   1. https://www.fpga4student.com/2017/09/seven-segment-led-display-controller-basys3-fpga.html
 
-    2. https://www.fpga4student.com/2017/09/vhdl-code-for-seven-segment-display.html
+   2. https://www.fpga4student.com/2017/09/vhdl-code-for-seven-segment-display.html
 
-    3. https://simple-circuit.com/pic18f46k22-7-segment-display-example/
+   3. https://simple-circuit.com/pic18f46k22-7-segment-display-example/
 
-    4. https://github.com/shahjui2000/Push-Button-Door-VHDL-
+   4. https://github.com/shahjui2000/Push-Button-Door-VHDL-
 
-    5. https://www.kth.se/social/files/5458faeef276544021bdf437/codelockVHDL_eng.pdf
+   5. https://www.kth.se/social/files/5458faeef276544021bdf437/codelockVHDL_eng.pdf
 
-    6. https://github.com/fm4dd/pmod-7seg4
+   6. https://github.com/fm4dd/pmod-7seg4
 
 
 
