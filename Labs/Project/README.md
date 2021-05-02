@@ -62,7 +62,7 @@ Hardware used in this project:
 
 ### VHDL modules description and simulations
 * [4x3 KeyPad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-control-module) 
-* [Relay control module](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project#relay-control-module)
+* [Relay control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay---vhdl)
 * [7seg display control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#driver-for-multiple-seven-segment-displays)
 * [Lock logic module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#lock-logic-module)
 
@@ -714,6 +714,7 @@ begin
 end architecture Behavioral;
 ```
 ##### VHDL code of testbench - `tb_driver_7seg_4digits.vhdl`
+[Link to `tb_driver_7seg_4digits.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/new/new/tb_driver_7seg_4digits.vhd)
 ```vhdl
 ------------------------------------------------------------------------
 --
@@ -864,6 +865,7 @@ end architecture testbench;
 
 
 ##### VHDL code of decoder to 7 segment display  - `hex_7seg.vhdl`
+[Link to `hex_7seg.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/new/new/hex_7seg.vhd)
 ```vhdl
 ----------------------------------------------------------------------------------
 -- Company: 
@@ -959,6 +961,7 @@ end Behavioral;
 ```
 
 ##### VHDL code of `clock_enable.vhdl`
+[Link to `clock_enable.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/new/new/clock_enable.vhd)
 
 ```vhdl
 ------------------------------------------------------------------------
@@ -1030,7 +1033,7 @@ end architecture Behavioral;
 ```
 
 ##### VHDL code of `cnt_up_down.vhdl`
-
+[Link to `cnt_up_down.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/new/new/cnt_up_down.vhd)
 ```vhdl
 ------------------------------------------------------------------------
 --
