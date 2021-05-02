@@ -26,10 +26,10 @@ Hardware used in this project:
 
 ### VHDL modules description and simulations
 * [4x3 KeyPad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-control-module) 
-* [Relay control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay-control-module)
+* [Relay control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay---vhdl)
 * [7seg display control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#driver-for-multiple-seven-segment-displays)
 * [Lock logic module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#lock-logic-module)
-* [Top module](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/README.md#top-module-description-and-simulations)
+
 
 ## KeyPad control module
 ### Description
@@ -450,7 +450,7 @@ end architecture Behavioral;
 ```
 
 
-#### Simulation of Relay control `tb_relay_to_door`
+#### Simulation of Relay control
 
 ```vhdl
 library ieee;
@@ -523,15 +523,16 @@ end architecture testbench;
 
 ## Driver for multiple seven-segment displays
 
-### Schematic of `driver_7seg_4digits` with connection to four 7 segment displays
+### Schematic of `driver_7seg_4digits` with connection to 7 segment displays
+
 
 ![driver](Images/driver_7seg.png)
 
-### Schematic of four 7 segment displays with connection to Arty-A7-100T
+### Schematic of 7 segment displays with connection to Arty-A7-100T
 
 ![schematic](Images/4digit-scheme.PNG)
 
-### Board for four 7 segment displays
+### Board for 7 segment displays
 
 ![board](Images/4digit-board.PNG)
 
@@ -565,9 +566,9 @@ end architecture testbench;
 |  Pin 9  |    T13     |   -    |
 | Pin 10  |    U13     |   -    |
 
-### Driver for 7 segment displays
+### VHDL code and simulation
 
-##### VHDL code of Relay controller - `driver_7seg_4digits.vhdl`
+##### VHDL code of driver for 7 segment displays - `driver_7seg_4digits.vhdl`
 
 ```vhdl
 ------------------------------------------------------------------------
@@ -684,8 +685,7 @@ begin
 
 end architecture Behavioral;
 ```
-### Testbench of driver for 7 segment displays
-##### `tb_driver_7seg_4digits`
+##### VHDL code of testbench - `tb_driver_7seg_4digits.vhdl`
 ```vhdl
 ------------------------------------------------------------------------
 --
@@ -812,7 +812,7 @@ begin
 
 end architecture testbench;
 ```
-##### `hex_7seg`
+##### VHDL code of  - `hex_7seg`
 **Decoder truth table for common anode 7-segment display:**
 
 | **Hex** | **Inputs** | **A** | **B** | **C** | **D** | **E** | **F** | **G** |
