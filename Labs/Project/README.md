@@ -20,6 +20,42 @@ Hardware used in this project:
 
 ![Hardware Connection Legend](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Board%20Legend.png)
 
+#### Table with pinouts for used modules
+##### Table for Keypad control module
+| General purpose I/O pins | 
+|      :--------:          | 
+|    I40     | 
+|    I39     | 
+|    I38     | 
+|    I37     | 
+|    I36     | 
+|    I35     | 
+|    I34     | 
+##### Table for 7 seg 4 digits module 
+| Pmod JB | Connection | Cathodes | Pmod JC | Connection | Anodes |
+| :-----: | :--------: | :------: | :-----: | :--------: | :----: |
+|  Pin 1  |    E15     |    CA    |  Pin 1  |    U12     |  AN0   |
+|  Pin 2  |    E16     |    CB    |  Pin 2  |    V12     |  AN1   |
+|  Pin 3  |    D15     |    CC    |  Pin 3  |    V10     |  AN2   |
+|  Pin 4  |    C15     |    CD    |  Pin 4  |    V11     |  AN3   |
+|  Pin 7  |    J17     |    CE    |  Pin 7  |    U14     |   -    |
+|  Pin 8  |    J18     |    CF    |  Pin 8  |    V14     |   -    |
+|  Pin 9  |    K15     |    CG    |  Pin 9  |    T13     |   -    |
+| Pin 10  |    J15     |    DP    | Pin 10  |    U13     |   -    |
+
+##### Table for Relay module
+| Pmod JA | Connection | 
+| :-----: | :--------: | 
+|  Pin 1  |    G13     | 
+|  Pin 2  |    B11     | 
+|  Pin 3  |    A11     | 
+|  Pin 4  |    D12     | 
+|  Pin 7  |    D13     | 
+|  Pin 8  |    B18     | 
+|  Pin 9  |    A18     | 
+| Pin 10  |    K16     | 
+
+
 #### Theoretical imagine of all of modules connected together 
 ![Hardware Description Board](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Connection_without_pins.png)
 
