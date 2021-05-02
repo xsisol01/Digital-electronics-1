@@ -595,33 +595,6 @@ This module is used to display the numbers (PIN code) which are entered into a k
 
 ![board](Images/4digit-render-sidefront.PNG)
 
-##### Table with connection of four 7 segment displays to Arty-A7-100T
-
-**Pmod JB**
-
-| Pmod JB | Connection | Cathodes |
-| :-----: | :--------: | :------: |
-|  Pin 1  |    E15     |    CA    |
-|  Pin 2  |    E16     |    CB    |
-|  Pin 3  |    D15     |    CC    |
-|  Pin 4  |    C15     |    CD    |
-|  Pin 7  |    J17     |    CE    |
-|  Pin 8  |    J18     |    CF    |
-|  Pin 9  |    K15     |    CG    |
-| Pin 10  |    J15     |    DP    |
-
-**Pmod JC**
-
-| Pmod JC | Connection | Anodes |
-| :-----: | :--------: | :----: |
-|  Pin 1  |    U12     |  AN0   |
-|  Pin 2  |    V12     |  AN1   |
-|  Pin 3  |    V10     |  AN2   |
-|  Pin 4  |    V11     |  AN3   |
-|  Pin 7  |    U14     |   -    |
-|  Pin 8  |    V14     |   -    |
-|  Pin 9  |    T13     |   -    |
-| Pin 10  |    U13     |   -    |
 
 ### VHDL code and simulation
 
