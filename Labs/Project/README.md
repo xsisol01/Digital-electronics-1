@@ -714,7 +714,7 @@ begin
 end architecture Behavioral;
 ```
 ##### VHDL code of testbench - `tb_driver_7seg_4digits.vhdl`
-[Link to `tb_driver_7seg_4digits.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/sim_1/new/tb_driver_7seg_4digits.vhd)
+[Link to `tb_driver_7seg_4digits.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sim_1/new/tb_driver_7seg_4digits.vhd)
 ```vhdl
 ------------------------------------------------------------------------
 --
