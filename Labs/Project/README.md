@@ -9,7 +9,7 @@
 Github repository link : https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs
 
 ### Project objectives
-The scope of this project was to create the lock system utilizing an Arty A7-100T board. The project, as per the initial assignment, consists of a 4x3 keypad, a 4-digit 7segment display, and a relay to control the door lock. We also implemented a Three-color-LED whose colors represent each state of the door ( Green for Opened, Yellow for Closing, Red for Closed). The 4-digit 7 segment display is located on a breadboard connected to the board via Pmod connectors.
+The scope of this project was to create the lock system utilizing an Arty A7-100T board. The project, as per the initial assignment, consists of a 4x3 keypad, a 4-digit 7segment display, and a relay to control the door lock. We also implemented a Three-color-LED whose colors represent each state of the door ( Green for Opened, Red for Closed). The 4-digit 7 segment display is located on a breadboard connected to the board via Pmod connectors.
 
 ### Hardware description
 Hardware used in this project:
@@ -19,10 +19,6 @@ Hardware used in this project:
 * Custom 4 Digit 7 segment module 
 
 ![Hardware Description Board](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Hardware%20description%20Board.png)
-
-#### Theoretical imagine of all of modules connected together 
-![Hardware Description Board](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Images/Zapojenie%20bez%20vidlice.png)
-
 
 ### VHDL modules description and simulations
 * [4x3 KeyPad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-control-module) 
@@ -37,10 +33,10 @@ Module "keypad_to_num" for controlling 4x3 keypad contains from 3 input ports ->
 Keypad_to_num works on basis of state machine where each state change to another after defined time.
 Each key represent bin signal - same as the label of the button on keypad for example 7 means b"0111". All other combinations are in table.
 
-### Functionality 
+##### Functionality 
 ![Keypad functionality](Images/keypad_func.PNG)
 
-### Table - Key pressed on keypad => num_o
+##### Table - Key pressed on keypad => num_o
 | Key | num_o | Value |
 | :-: | :-: | :-: | 
 | 0 | b"0000" | 0 | 
@@ -57,13 +53,12 @@ Each key represent bin signal - same as the label of the button on keypad for ex
 | # | b"1111" | ENTER |
 | N/A | b"1101" | DEFAULT | 
 
-### State diagram 
+##### State diagram 
 ![State diagram](Images/keypad_sd.PNG)
 
 
 ### VHDL code and simulation
-
-#### VHDL code of KeyPad control - keypad_to_num.vhdl
+##### VHDL code of KeyPad controller - `keypad_to_num.vhdl`
 
 ```vhdl
 library ieee;
@@ -252,7 +247,7 @@ begin
 end architecture Behavioral;
 ```
 
-#### Simulation of KeyPad control - tb_keypad_to_num.vhdl
+##### Simulation of KeyPad controller - `tb_keypad_to_num.vhdl`
 
 ```vhdl
 library ieee;
@@ -327,7 +322,7 @@ begin
 end architecture testbench;  
 ```
 
-#### Image of simulation waveforms - simulating KeyPad control module
+##### Image of simulation waveforms - simulating KeyPad controller module
 
 ![Keypad simulation waveforms](Images/TB_keypad.PNG)
 
@@ -344,7 +339,7 @@ Add Text here
 
 
 ### VHDL code and simulation
-#### VHDL code for Relay control
+#### VHDL code of Relay controller - `relay_to_door.vhdl`
 
 ```vhdl
 library ieee;
@@ -568,7 +563,7 @@ end architecture testbench;
 
 ### Driver for 7 segment displays
 
-##### ` driver_7seg_4digits`
+##### VHDL code of Relay controller - `driver_7seg_4digits.vhdl`
 
 ```vhdl
 ------------------------------------------------------------------------
@@ -1077,11 +1072,14 @@ end architecture behavioral;
 
 ### Lock logic module
 some information
-##### State diagram
 
 ##### Block scheme
+![Block Scheme of lock module](Images/BS_lock.PNG)
 
-##### `locker_logic.vhdl`
+##### State diagram
+![State diagram of lock module](Images/SD_lock.PNG)
+
+##### VHDL code of Lock logic module - `locker_logic.vhdl`
 
 ```vhdl
 library IEEE;
@@ -1437,7 +1435,7 @@ end architecture testbench;
 
 ![top](Images/top.png)
 
-##### Design source of `Top.vhdl`
+##### VHDL code of Top modul - `top.vhdl`
 ```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -1538,7 +1536,7 @@ begin
 end Behavioral;
 ```
 
-##### Simulation source of `tb_top.vhdl`
+##### Simulation top module - `tb_top.vhdl`
 ```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -1675,8 +1673,8 @@ end process p_stimulus;
 end Behavioral;
 ```
 ##### Simulation waveform of top module
-
 ![tb_top](Images/TB_top.PNG)
+
 ## Video
 
 
