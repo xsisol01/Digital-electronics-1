@@ -511,7 +511,7 @@ end architecture Behavioral;
 
 
 #### Simulation of Relay control - `tb_relay_to_door.vhdl`
-[Link to `relay_to_door.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sim_1/new/tb_relay_to_door.vhd)
+[Link to `tb_relay_to_door.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sim_1/new/tb_relay_to_door.vhd)
 
 ```vhdl
 library ieee;
