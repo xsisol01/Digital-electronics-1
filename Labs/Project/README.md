@@ -1732,7 +1732,7 @@ Our main goal was to fulfill the task, which we can say that we succeeded. In ad
 
 ## Video
 
-https://drive.google.com/file/d/1PKsNib1Ac1Th51smUCPPWn5txGTWoCQO/view?usp=sharing
+[![Project Video](http://img.youtube.com/vi/3xFRkxmYkFs/0.jpg)](http://www.youtube.com/watch?v=3xFRkxmYkFs "Project Overview")
 
 ## References
 
