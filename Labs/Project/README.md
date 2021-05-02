@@ -1307,7 +1307,7 @@ begin
 end Behavioral;
 ```
 
-##### `tb_lock_logic.vhdl`
+##### Simulation of lock logic - `tb_lock_logic.vhdl`
 
 ```vhdl
 library IEEE;
