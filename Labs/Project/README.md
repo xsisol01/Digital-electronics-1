@@ -26,7 +26,7 @@ Hardware used in this project:
 
 ### VHDL modules description and simulations
 * [4x3 KeyPad control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#keypad-control-module) 
-* [Relay control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay---vhdl)
+* [Relay control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay-control-module)
 * [7seg display control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#driver-for-multiple-seven-segment-displays)
 * [Lock logic module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#lock-logic-module)
 * [Top module](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/README.md#top-module-description-and-simulations)
@@ -450,7 +450,7 @@ end architecture Behavioral;
 ```
 
 
-#### Simulation of Relay control
+#### Simulation of Relay control `tb_relay_to_door`
 
 ```vhdl
 library ieee;
