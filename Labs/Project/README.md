@@ -835,7 +835,7 @@ end architecture testbench;
 | F | 1111 | 0 | 1 | 1 | 1 | 0 | 0 | 0 |
 
 
-##### VHDL code of decoder to 7 segment display  - `hex_7seg`
+##### VHDL code of decoder to 7 segment display  - `hex_7seg.vhdl`
 ```vhdl
 ----------------------------------------------------------------------------------
 -- Company: 
@@ -930,7 +930,7 @@ end Behavioral;
 
 ```
 
-##### VHDL code of `clock_enable`
+##### VHDL code of `clock_enable.vhdl`
 
 ```vhdl
 ------------------------------------------------------------------------
@@ -1001,7 +1001,7 @@ begin
 end architecture Behavioral;
 ```
 
-##### VHDL code of `cnt_up_down`
+##### VHDL code of `cnt_up_down.vhdl`
 
 ```vhdl
 ------------------------------------------------------------------------
@@ -1074,7 +1074,7 @@ begin
 end architecture behavioral;
 
 ```
-##### Simulation of `driver_7seg_4digits`
+##### Simulation of `driver_7seg_4digits.vhdl`
 ![simulace](Images/simulace_7seg_4digits_v2.png)
 
 
