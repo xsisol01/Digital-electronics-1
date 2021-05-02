@@ -404,8 +404,6 @@ LED_o = “100”// LED color is red
 ### VHDL code and simulation
 #### VHDL code of Relay controller - `relay_to_door.vhdl`
 
-[Link to `relay_to_door.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/new/relay_to_door.vhd)
-
 ```vhdl
 library ieee;
 use ieee.std_logic_1164.all;
@@ -513,8 +511,6 @@ end architecture Behavioral;
 
 #### Simulation of Relay control - `tb_relay_to_door.vhdl`
 
-[Link to `tb_relay_to_door.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sim_1/new/tb_relay_to_door.vhd)
-
 ```vhdl
 library ieee;
 use ieee.std_logic_1164.all;
@@ -604,6 +600,7 @@ This module is used to display the numbers (PIN code) which are entered into a k
 ### VHDL code and simulation
 
 ##### VHDL code of driver for 7 segment displays - `driver_7seg_4digits.vhdl`
+[Link to `driver_7seg_4digits.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/new/new/driver_7seg_4digits.vhd)
 
 ```vhdl
 ------------------------------------------------------------------------
