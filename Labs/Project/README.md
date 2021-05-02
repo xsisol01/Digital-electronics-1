@@ -99,7 +99,7 @@ Each key represent bin signal - same as the label of the button on keypad for ex
 
 ### VHDL code and simulation
 ##### VHDL code of KeyPad controller - `keypad_to_num.vhdl`
-[link to keypad design](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/imports/Project/Project_lock/Project_lock.srcs/sources_1/new/keypad_to_num.vhd)
+[Link to `keypad_to_num.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/imports/Project/Project_lock/Project_lock.srcs/sources_1/new/keypad_to_num.vhd)
 
 ```vhdl
 library ieee;
@@ -289,6 +289,7 @@ end architecture Behavioral;
 ```
 
 ##### Simulation of KeyPad controller - `tb_keypad_to_num.vhdl`
+[Link to `tb_keypad_to_num.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sim_1/new/tb_keypad_to_num.vhd)
 
 ```vhdl
 library ieee;
@@ -1118,6 +1119,7 @@ Checking if the numbers were selected correctly, we are working with defined sig
 ![State diagram of lock module](Images/SD_lock.PNG)
 
 ##### VHDL code of Lock logic module - `locker_logic.vhdl`
+[Link to `locker_logic.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/imports/Project/Final/Nov%20prieinok/try/try.srcs/sources_1/new/locker_logic.vhd)
 
 ```vhdl
 library IEEE;
@@ -1342,6 +1344,7 @@ end Behavioral;
 ```
 
 ##### Simulation of lock logic - `tb_lock_logic.vhdl`
+[Link to `tb_lock_logic.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sim_1/new/tb_lock_logic.vhd)
 
 ```vhdl
 library IEEE;
@@ -1474,6 +1477,9 @@ end architecture testbench;
 ![top](Images/top1.png)
 
 ##### VHDL code of Top modul - `top.vhdl`
+[Link to `top.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sources_1/new/top.vhd)
+
+
 ```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -1575,6 +1581,8 @@ end Behavioral;
 ```
 
 ##### Simulation top module - `tb_top.vhdl`
+[Link to `tb_top.vhdl`](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/Lock/project_final2.srcs/sim_1/new/tb_top.vhd)
+
 ```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
