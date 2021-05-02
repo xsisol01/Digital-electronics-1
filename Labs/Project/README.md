@@ -29,7 +29,7 @@ Hardware used in this project:
 * [Relay control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#relay---vhdl)
 * [7seg display control module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#driver-for-multiple-seven-segment-displays)
 * [Lock logic module](https://github.com/xsisol01/Digital-electronics-1/tree/main/Labs/Project#lock-logic-module)
-
+* [Top module](https://github.com/xsisol01/Digital-electronics-1/blob/main/Labs/Project/README.md#top-module-description-and-simulations)
 
 ## KeyPad control module
 ### Description
